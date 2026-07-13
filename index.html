@@ -1372,6 +1372,15 @@
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/39a5b0f2968c010f345e51cecd3ad4f3b6f40692/mannart10.jpg", 
                     cardHook: "Start spreading the news.",
                     pours: ["Woodford Reserve", "Bulleit Bourbon", "Jim Beam Bourbon"]
+                },
+                { 
+                    name: "Brandy Alexander", 
+                    flavorProfile: "Sophisticated sweet cocktail combining smooth brandy and rich premium cream layers.", 
+                    recipe: ["2 oz Brandy", "1 oz Baileys Irish Cream", "1 oz Kahlúa"], 
+                    story: "The Velvet Hood: Known as a smooth, rich escape. This was created during our legendary winter retreat when the heat failed, and the only things keeping us warm were wool blankets, a roaring fireplace, and this velvety masterpiece.", 
+                    image: "https://raw.githubusercontent.com/aarmax8/Nomads/ea2380beff602a5a9070cc310b2a37e4b444246c/frontend/0ac5da1e71c995f58d75335fffabd844.jpg", 
+                    cardHook: "Warm, velvety, and completely rich.",
+                    pours: ["E&J Brandy"]
                 }
             ];
         }
@@ -1478,24 +1487,22 @@
                     primarySpirit = "Mocktails";
                     titleColor = "#9ca3af";
                 }
-                // Sloe Gin classification
-                else if (recipeString.includes('sloe gin')) {
-                    category = "Liqueurs";
-                    primarySpirit = "Liqueurs";
-                    titleColor = "#f472b6";
+                // 1. Brandy (Check brandy first so multi-spirit drinks like Between the Sheets group as Brandy)
+                else if (recipeString.includes('brandy')) {
+                    category = "Brandy";
+                    primarySpirit = "Brandy";
+                    titleColor = "#c084fc";
                 }
-                // Scotch classification
+                // 2. Scotch
                 else if (recipeString.includes('scotch')) {
                     category = "Scotch";
                     primarySpirit = "Scotch";
                     titleColor = "#FF8C00";
                 }
-                // Whiskey classification
-                else if (recipeString.includes('whiskey') || recipeString.includes('bourbon') || recipeString.includes('southern comfort')) {
+                // 3. Whiskey / Bourbon / Southern Comfort
+                else if (recipeString.includes('whiskey') || recipeString.includes('bourbon') || recipeString.includes('southern comfort') || recipeString.includes('old grand-dad') || recipeString.includes('jim beam')) {
                     category = "Whiskey";
                     titleColor = "#FF4500";
-                    
-                    // Assign specific whiskey tiers
                     if (recipeString.includes('coke')) {
                         primarySpirit = "Low-End Whiskey";
                     } else if (['old fashioned', 'godfather', 'sazerac'].includes(nameLower)) {
@@ -1504,35 +1511,35 @@
                         primarySpirit = "Mid-Range Whiskey";
                     }
                 }
-                // Vodka classification
-                else if (recipeString.includes('vodka')) {
-                    category = "Vodka";
-                    primarySpirit = "Vodka";
-                    titleColor = "#38bdf8";
-                }
-                // Gin classification
-                else if (recipeString.includes('gin')) {
-                    category = "Gin";
-                    primarySpirit = "Gin";
-                    titleColor = "#4ade80";
-                }
-                // Rum classification
-                else if (recipeString.includes('rum')) {
-                    category = "Rum";
-                    primarySpirit = "Rum";
-                    titleColor = "#f59e0b";
-                }
-                // Tequila classification
+                // 4. Tequila
                 else if (recipeString.includes('tequila')) {
                     category = "Tequila";
                     primarySpirit = "Tequila";
                     titleColor = "#fbbf24";
                 }
-                // Brandy classification
-                else if (recipeString.includes('brandy')) {
-                    category = "Brandy";
-                    primarySpirit = "Brandy";
-                    titleColor = "#c084fc";
+                // 5. Rum
+                else if (recipeString.includes('rum')) {
+                    category = "Rum";
+                    primarySpirit = "Rum";
+                    titleColor = "#f59e0b";
+                }
+                // 6. Gin
+                else if (recipeString.includes('gin') && !recipeString.includes('sloe gin')) {
+                    category = "Gin";
+                    primarySpirit = "Gin";
+                    titleColor = "#4ade80";
+                }
+                // 7. Vodka
+                else if (recipeString.includes('vodka')) {
+                    category = "Vodka";
+                    primarySpirit = "Vodka";
+                    titleColor = "#38bdf8";
+                }
+                // 8. Sloe Gin / Sweet Liqueurs
+                else if (recipeString.includes('sloe gin') || recipeString.includes('amaretto') || recipeString.includes('schnapps') || recipeString.includes('pucker') || recipeString.includes('jägermeister') || recipeString.includes('kahlúa') || recipeString.includes('baileys') || recipeString.includes('aperol')) {
+                    category = "Liqueurs";
+                    primarySpirit = "Liqueurs";
+                    titleColor = "#f472b6";
                 }
 
                 return { ...cocktail, category, titleColor, primarySpirit };
@@ -1550,7 +1557,7 @@
                 const newBarcode = {
                     name: "Scan to Connect",
                     isBarcode: true,
-                    image: 'https://raw.githubusercontent.com/aarmax8/Nomads/e4ef12fb2bff260fe0d7de78741a3ec2307e381d/3dbarcode.JPG?raw=true',
+                    image: 'https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.JPG',
                     recipe: [],
                     flavorProfile: "A gateway to the digital road.",
                     cardHook: "Point your camera here.",
@@ -1560,6 +1567,31 @@
                     pours: []
                 };
                 cocktails.unshift(newBarcode);
+            }
+        }
+
+        /**
+         * STREAMING_CHUNK: Setting up image repair helpers...
+         */
+        function repairBarcodeImage(img) {
+            const fallbacks = [
+                "https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.jpg",
+                "https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.PNG",
+                "https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.png",
+                "https://raw.githubusercontent.com/aarmax8/Nomads/master/3dbarcode.JPG",
+                "https://raw.githubusercontent.com/aarmax8/Nomads/master/3dbarcode.jpg",
+                "https://raw.githubusercontent.com/aarmax8/Nomads/e4ef12fb2bff260fe0d7de78741a3ec2307e381d/3dbarcode.JPG?raw=true",
+                "https://placehold.co/400x400/101010/f59e0b?text=Scan+To+Connect"
+            ];
+            
+            if (!img.dataset.fallbackIndex) {
+                img.dataset.fallbackIndex = "0";
+            }
+            
+            let index = parseInt(img.dataset.fallbackIndex, 10);
+            if (index < fallbacks.length) {
+                img.dataset.fallbackIndex = (index + 1).toString();
+                img.src = fallbacks[index];
             }
         }
 
@@ -1632,7 +1664,7 @@
                                     <i class="fas fa-undo-alt mr-2"></i> **Flip Card for Deck Index**
                                 </p>
                             </div>
-                            <img src="${item.image}" alt="3D Barcode">
+                            <img src="${item.image}" alt="3D Barcode" onerror="repairBarcodeImage(this)">
                             <div class="text-center mt-2">
                                 <h3 class="drink-card-title">${item.name}</h3>
                                 <div class="card-footer text-xs">
