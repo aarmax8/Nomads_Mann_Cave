@@ -908,7 +908,7 @@
                 { 
                     name: "Rum Punch", 
                     flavorProfile: "Warm spiced rum with a sharp lime kick and a sweet fruit finish.", 
-                    recipe: ["2 oz Rum", "2 oz Orange Juice", "2 oz Pineapple Juice", "0.5 oz Grenadine", "Cherry on Top"], 
+                    recipe: ["2 oz Rum", "2 oz Orange Juice", "2.5 oz Pineapple Juice", "0.5 oz Grenadine", "Cherry on Top"], 
                     story: "Panhead Kick: This drink has all the stages of trying to kickstart a stubborn old Panhead: spicy anger, a sharp kick of frustration, and sweet relief when it roars to life.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/0dcbab77d90f59f2298642338dfee691353ce70a/frontend/USq6nI.jpg", 
                     cardHook: "A more reliable way to get started.",
@@ -921,7 +921,7 @@
                     story: "The Crusher's Choice: Our biggest, meanest member, Crusher, orders this. Not for his kid. For himself. He says it 'calms his inner rage.' You WILL NOT make fun of him.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/90ba0d71f42b567f7e9a417fbd74cedfc805201e/thumbnail_IMG_7989.jpg", 
                     cardHook: "The toughest drink in the bar.",
-                    pours: ["Sprite", "Grenadine", "Cherries"]
+                    pours: []
                 }, 
                 { 
                     name: "Dark 'n' Stormy", 
@@ -1259,7 +1259,7 @@
                 { 
                     name: "Gin & Juice", 
                     flavorProfile: "Botanical gin with a sweet, fruit-forward classic kick.", 
-                    recipe: ["2 oz Gin", "2 oz Orange Juice", "2 oz Pineapple Juice"], 
+                    recipe: ["2 oz Gin", "2 oz Orange Juice", "2.5 oz Pineapple Juice"], 
                     story: "Phantom Shift: Named for the 'phantom' expenses that keep appearing on the club's credit card. We know who's doing it. And their time is short.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/f2a6114d2d00087a3f9192fc5cc74614.jpg", 
                     cardHook: "For the gears that aren't there.",
@@ -1286,7 +1286,7 @@
                 { 
                     name: "Washington Apple", 
                     flavorProfile: "Smooth whiskey, sour apple, and sweet Sprite. Like apple pie with a punch.", 
-                    recipe: ["2 oz Whiskey", "1 oz Apple Pucker", "2 oz Cranberry Juice"], 
+                    recipe: ["2 oz Whiskey", "1 oz Apple Pucker", "2.5 oz Cranberry Juice"], 
                     story: "Finn's Orchard Kick: Finn, our resident genius, tried to make 'artisanal applejack' in the clubhouse radiator. The radiator exploded. This drink is a much safer tribute to his ambition.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/8152e3c111a698e2a7f072b33b5662906e08d17d/mannart12.jpg", 
                     cardHook: "A tribute to spectacular failures.",
@@ -1385,7 +1385,7 @@
                     'High-End Whiskey': ['Woodford Reserve', 'WhistlePig', 'Michter\'s'],
                     'Mid-Range Whiskey': ['Jameson Irish Whiskey', 'Maker\'s Mark', 'Crown Royal', 'Bulleit Bourbon'],
                     'Low-End Whiskey': ['Southern Comfort', 'Old Grand-Dad Whiskey', 'Jim Beam Bourbon'],
-                    'Scotch': ['Drambuie', 'Johnnie Walker Red Label', 'Dewars Scotch'],
+                    'Scotch': ['Dewars Scotch', 'Johnnie Walker Red Label'],
                     'Vodka': ['Grey Goose Vodka', 'Ketel One Vodka', 'Stolichnaya Citros Vodka'], 
                     'Gin': ['Tanqueray Gin'],
                     'Rum': ['Bacardi Rum', 'Captain Morgan Spiced Rum', 'Kraken Black Spiced Rum', 'Malibu Rum'],
@@ -1394,7 +1394,7 @@
                 },
                 'Liqueurs & Schnapps': {
                     'Fruit Liqueurs': ['Sloe Gin', 'Apple Pucker', 'Blue Curacao', 'Cherry Schnapps', 'Cointreau', 'Heering Cherry liqueur', 'Peach Schnapps', 'Raspberry Schnapps', 'Triple Sec', 'Peach Liqueur', 'Butterscotch Schnapps', 'Root Beer Schnapps'], 
-                    'Herbal': ['Aperol', 'Jägermeister', 'Pernod', 'St-Germain'],
+                    'Herbal': ['Aperol', 'Jägermeister', 'Pernod', 'St-Germain', 'Drambuie'],
                     'Cream & Coffee': ['Amaretto', 'Baileys Irish Cream', 'Kahlúa']
                 },
                 'Mixers & Bitters': {
@@ -1456,65 +1456,116 @@
             });
         }
 
+        /**
+         * STREAMING_CHUNK: Refining category structure and setting up primary spirit profiles
+         */
         function setupCocktailData() {
             const initialCocktails = getInitialCocktailData();
-            const ingredientCategories = getIngredientCategories();
 
             const processedCocktails = initialCocktails.map((cocktail) => {
-                const categories = new Set();
+                if (cocktail.isBarcode) return cocktail;
+
                 const recipeString = cocktail.recipe.join(' ').toLowerCase();
+                const nameLower = cocktail.name.toLowerCase();
                 
-                if (recipeString.includes('juice') || recipeString.includes('sour mix')) categories.add('Brunch');
-                if (recipeString.includes('club soda') || recipeString.includes('tonic water')) categories.add('Lunch');
-                if (recipeString.includes('coke') || recipeString.includes('sprite')) categories.add('Dinner');
-                if (recipeString.includes('baileys') || recipeString.includes('kahlúa') || recipeString.includes('cream')) categories.add('Desert');
-                
-                if (categories.size === 0) categories.add('Lunch'); 
+                let category = "Liqueurs";
+                let primarySpirit = "Liqueurs";
+                let titleColor = "#f472b6"; // default pink for liqueurs
 
-                let titleColor = '#f59e0b';
-                let primarySpirit = 'Liqueurs';
-
-                // Map main spirit category
-                const spiritOrder = ['High-End Whiskey', 'Mid-Range Whiskey', 'Low-End Whiskey', 'Scotch', 'Vodka', 'Gin', 'Rum', 'Tequila', 'Brandy'];
-                let mainIngredient = null;
-
-                for (const spiritType of spiritOrder) {
-                    const spirits = ingredientCategories.Spirits[spiritType];
-                    const foundSpirit = cocktail.recipe.map(parseIngredientName).find(ing => ing && spirits.includes(ing));
-                    if (foundSpirit) {
-                        mainIngredient = foundSpirit;
-                        primarySpirit = spiritType;
-                        break;
+                // Check for Shirley Temple
+                if (cocktail.name === "Shirley Temple") {
+                    category = "Non-Alcoholic";
+                    primarySpirit = "Mocktails";
+                    titleColor = "#9ca3af";
+                }
+                // Sloe Gin classification
+                else if (recipeString.includes('sloe gin')) {
+                    category = "Liqueurs";
+                    primarySpirit = "Liqueurs";
+                    titleColor = "#f472b6";
+                }
+                // Scotch classification
+                else if (recipeString.includes('scotch')) {
+                    category = "Scotch";
+                    primarySpirit = "Scotch";
+                    titleColor = "#FF8C00";
+                }
+                // Whiskey classification
+                else if (recipeString.includes('whiskey') || recipeString.includes('bourbon') || recipeString.includes('southern comfort')) {
+                    category = "Whiskey";
+                    titleColor = "#FF4500";
+                    
+                    // Assign specific whiskey tiers
+                    if (recipeString.includes('coke')) {
+                        primarySpirit = "Low-End Whiskey";
+                    } else if (['old fashioned', 'godfather', 'sazerac'].includes(nameLower)) {
+                        primarySpirit = "High-End Whiskey";
+                    } else {
+                        primarySpirit = "Mid-Range Whiskey";
                     }
                 }
-                
-                if (mainIngredient) titleColor = getIngredientInfo(mainIngredient).colorHex;
-
-                if (primarySpirit.includes('Whiskey')) {
-                    titleColor = '#FF4500';
+                // Vodka classification
+                else if (recipeString.includes('vodka')) {
+                    category = "Vodka";
+                    primarySpirit = "Vodka";
+                    titleColor = "#38bdf8";
+                }
+                // Gin classification
+                else if (recipeString.includes('gin')) {
+                    category = "Gin";
+                    primarySpirit = "Gin";
+                    titleColor = "#4ade80";
+                }
+                // Rum classification
+                else if (recipeString.includes('rum')) {
+                    category = "Rum";
+                    primarySpirit = "Rum";
+                    titleColor = "#f59e0b";
+                }
+                // Tequila classification
+                else if (recipeString.includes('tequila')) {
+                    category = "Tequila";
+                    primarySpirit = "Tequila";
+                    titleColor = "#fbbf24";
+                }
+                // Brandy classification
+                else if (recipeString.includes('brandy')) {
+                    category = "Brandy";
+                    primarySpirit = "Brandy";
+                    titleColor = "#c084fc";
                 }
 
-                return { ...cocktail, category: Array.from(categories), titleColor, primarySpirit };
+                return { ...cocktail, category, titleColor, primarySpirit };
             });
 
             cocktails = processedCocktails;
-            cocktails.sort((a, b) => a.name.localeCompare(b.name));
+            cocktails.sort((a, b) => {
+                if (a.isBarcode) return -1;
+                if (b.isBarcode) return 1;
+                return a.name.localeCompare(b.name);
+            });
 
-            const barcodeCard = {
-                name: "Scan to Connect",
-                isBarcode: true,
-                image: 'https://raw.githubusercontent.com/aarmax8/Nomads/e4ef12fb2bff260fe0d7de78741a3ec2307e381d/3dbarcode.JPG?raw=true',
-                recipe: [],
-                flavorProfile: "A gateway to the digital road.",
-                cardHook: "Point your camera here.",
-                category: [],
-                titleColor: '#f59e0b',
-                primarySpirit: 'Barcode',
-                pours: []
-            };
-            cocktails.unshift(barcodeCard);
+            const barcodeCard = cocktails.find(c => c.isBarcode);
+            if (!barcodeCard) {
+                const newBarcode = {
+                    name: "Scan to Connect",
+                    isBarcode: true,
+                    image: 'https://raw.githubusercontent.com/aarmax8/Nomads/e4ef12fb2bff260fe0d7de78741a3ec2307e381d/3dbarcode.JPG?raw=true',
+                    recipe: [],
+                    flavorProfile: "A gateway to the digital road.",
+                    cardHook: "Point your camera here.",
+                    category: "Non-Alcoholic",
+                    titleColor: '#f59e0b',
+                    primarySpirit: 'Barcode',
+                    pours: []
+                };
+                cocktails.unshift(newBarcode);
+            }
         }
 
+        /**
+         * STREAMING_CHUNK: Processing card viewport bindings & render systems
+         */
         function renderMenu(itemsToRender) {
             menuGrid.innerHTML = '';
             if (itemsToRender.length === 0) {
@@ -1537,22 +1588,23 @@
 
         function renderBarcodeCard(item, index) {
             const nonBarcodeCocktails = cocktails.filter(c => !c.isBarcode);
-            const spiritGroups = {};
+            const categorisedGroups = {};
+            
             nonBarcodeCocktails.forEach(drink => {
-                const groupName = drink.primarySpirit;
-                if (!spiritGroups[groupName]) {
-                    spiritGroups[groupName] = [];
+                const catName = drink.category;
+                if (!categorisedGroups[catName]) {
+                    categorisedGroups[catName] = [];
                 }
-                spiritGroups[groupName].push(drink);
+                categorisedGroups[catName].push(drink);
             });
 
-            const displayOrder = ['High-End Whiskey', 'Mid-Range Whiskey', 'Low-End Whiskey', 'Scotch', 'Vodka', 'Gin', 'Rum', 'Tequila', 'Brandy', 'Liqueurs'];
+            const displayOrder = ['Whiskey', 'Scotch', 'Vodka', 'Gin', 'Rum', 'Tequila', 'Brandy', 'Liqueurs', 'Non-Alcoholic'];
             let listHtml = '';
             
-            displayOrder.forEach(spiritCategory => {
-                const drinksInGroup = spiritGroups[spiritCategory];
+            displayOrder.forEach(categoryName => {
+                const drinksInGroup = categorisedGroups[categoryName];
                 if (drinksInGroup && drinksInGroup.length > 0) {
-                    listHtml += `<div class="toc-category-header">${spiritCategory}</div>`;
+                    listHtml += `<div class="toc-category-header">${categoryName}</div>`;
                     drinksInGroup.sort((a, b) => a.name.localeCompare(b.name));
                     
                     drinksInGroup.forEach(drink => {
@@ -1719,6 +1771,9 @@
             container.innerHTML = itemsHtml;
         }
 
+        /**
+         * STREAMING_CHUNK: Populating and tracking stock listings inside inventory controllers
+         */
         function renderBarStockModal() {
             const contentContainer = document.getElementById('bar-stock-content');
             if (!contentContainer) return;
@@ -1773,6 +1828,9 @@
             });
         }
 
+        /**
+         * STREAMING_CHUNK: Re-binding standard filter sets and lists
+         */
         function initializeFilterModal() {
             const filterModalContent = document.getElementById('filter-modal-content');
             if (!filterModalContent) return;
@@ -1790,20 +1848,25 @@
 
              const categoryFilters = `
                  <div>
-                     <h3 class="text-lg text-amber-500 mb-2 font-rye tracking-wider">Food Pairing</h3>
+                     <h3 class="text-lg text-amber-500 mb-2 font-rye tracking-wider">Beverage Categories</h3>
                      <div id="filter-group-category" class="flex flex-wrap gap-3">
                           <button data-category="all" class="filter-pill">The Full Deck</button>
-                          <button data-category="Brunch" class="filter-pill">Brunch</button>
-                          <button data-category="Lunch" class="filter-pill">Lunch</button>
-                          <button data-category="Dinner" class="filter-pill">Dinner</button>
-                          <button data-category="Desert" class="filter-pill">Desert</button>
+                          <button data-category="Whiskey" class="filter-pill">Whiskey</button>
+                          <button data-category="Scotch" class="filter-pill">Scotch</button>
+                          <button data-category="Vodka" class="filter-pill">Vodka</button>
+                          <button data-category="Gin" class="filter-pill">Gin</button>
+                          <button data-category="Rum" class="filter-pill">Rum</button>
+                          <button data-category="Tequila" class="filter-pill">Tequila</button>
+                          <button data-category="Brandy" class="filter-pill">Brandy</button>
+                          <button data-category="Liqueurs" class="filter-pill">Liqueurs</button>
+                          <button data-category="Non-Alcoholic" class="filter-pill">Non-Alcoholic</button>
                      </div>
                  </div>`;
             
             const spiritCategories = Object.keys(ingredientCategories.Spirits);
             const spiritFilters = `
                  <div>
-                     <h3 class="text-lg text-amber-500 mb-2 font-rye tracking-wider">Spirit</h3>
+                     <h3 class="text-lg text-amber-500 mb-2 font-rye tracking-wider">Exact Base Spirit Filter</h3>
                      <div id="filter-group-spirit" class="flex flex-wrap gap-3">
                           ${spiritCategories.map(spirit => `<button data-spirit="${spirit}" class="filter-pill">${spirit}</button>`).join('')}
                      </div>
@@ -1914,7 +1977,7 @@
             const ingredientCategories = getIngredientCategories();
 
             if (activeFilters.category && activeFilters.category !== 'all') {
-                drinkableCocktails = drinkableCocktails.filter(item => item.category.includes(activeFilters.category));
+                drinkableCocktails = drinkableCocktails.filter(item => item.category === activeFilters.category);
             }
 
             if (activeFilters.spirit) {
