@@ -155,8 +155,11 @@
     #action-bar .footer-btn.is-active-filter i { color: #d4af37; }
     #action-bar #action-favorites-btn.is-active { color: #d4af37; }
     #action-bar #action-favorites-btn.is-active i { color: #d4af37; }
-    #action-bar .footer-btn:not(#action-favorites-btn) { color: #d4af37; }
-    #action-bar .footer-btn:not(#action-favorites-btn) i { color: #d4af37; }
+    
+    /* Top Menu Active States */
+    #story-view-btn.is-active, #story-view-btn.is-active i { color: #fbbf24; }
+    #action-bar .footer-btn:not(#action-favorites-btn):not(#story-view-btn) { color: #d4af37; }
+    #action-bar .footer-btn:not(#action-favorites-btn):not(#story-view-btn) i { color: #d4af37; }
 
     .carousel-view {
         display: flex;
@@ -268,10 +271,10 @@
     }
 
     .recipe-content {
-        flex-grow: 1;
-        overflow-y: auto;
+        flex-grow: 1; /* Takes up available space */
+        overflow-y: auto; /* SCROLLING ENABLED FOR INGREDIENTS */
         padding: 0.85rem 1.25rem;
-        min-height: 0;
+        min-height: 0; /* Important for flex scrolling */
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -320,7 +323,7 @@
         font-family: 'Cormorant Garamond', serif;
         font-size: 0.9rem;
         flex-shrink: 0;
-        max-height: 145px;
+        max-height: 160px; /* ALLOWS SCROLLING FOR OPTIONS */
         overflow-y: auto;
     }
     .card-pour-options::-webkit-scrollbar { width: 4px; }
@@ -536,6 +539,7 @@
         border: 1px solid rgba(212, 175, 55, 0.3);
     }
 
+    /* Bottom Menu Active States */
     #app-footer {
         position: relative;
         flex-shrink: 0;
@@ -566,10 +570,8 @@
         align-items: center;
     }
 
-    #app-footer #scroll-prev-btn i, #app-footer #scroll-prev-btn span,
-    #app-footer #scroll-next-btn i, #app-footer #scroll-next-btn span { color: #d4af37; }
-    #app-footer #scroll-home-btn, #app-footer #scroll-home-btn i { color: #d4af37; }
-    #app-footer #story-view-btn.is-active, #app-footer #story-view-btn.is-active i { color: #fbbf24; }
+    #app-footer .footer-btn i, #app-footer .footer-btn span { color: #d4af37; }
+    #action-filter-btn.is-active-filter, #action-filter-btn.is-active-filter i { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
 
     #splash-screen {
         position: fixed;
@@ -607,6 +609,26 @@
         50% { transform: scale(1.04); opacity: 1; }
     }
 
+    /* Beautiful Bottom Sheet Filter Modal */
+    .modal { transition: opacity 0.3s ease-in-out; }
+    #filter-modal .modal-panel {
+        margin-top: auto; /* Dock to bottom */
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: none;
+        background-image: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(20, 20, 20, 0.98) 100%);
+        border-top: 2px solid #d4af37;
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.8);
+    }
+    .modal-panel {
+        background-image:
+            linear-gradient(to top, rgba(17, 17, 17, 0.98) 0%, rgba(17, 17, 17, 0.75) 30%, rgba(17, 17, 17, 0.95) 100%),
+            url('https://raw.githubusercontent.com/aarmax8/Nomads/c494fdd916aac964350c8174aa9fd9a37f7f09b7/thumbnail_IMG_8263.jpg?raw=true');
+        background-size: cover;
+        background-position: center;
+        border: 2px solid #d4af37;
+    }
+
     .filter-pill {
         background-color: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(212, 175, 55, 0.3);
@@ -629,16 +651,6 @@
         box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
         transform: scale(1.05);
         text-shadow: none;
-    }
-
-    .modal { transition: opacity 0.3s ease-in-out; }
-    .modal-panel {
-        background-image:
-            linear-gradient(to top, rgba(17, 17, 17, 0.98) 0%, rgba(17, 17, 17, 0.75) 30%, rgba(17, 17, 17, 0.95) 100%),
-            url('https://raw.githubusercontent.com/aarmax8/Nomads/c494fdd916aac964350c8174aa9fd9a37f7f09b7/thumbnail_IMG_8263.jpg?raw=true');
-        background-size: cover;
-        background-position: center;
-        border: 2px solid #d4af37;
     }
 
     .stock-btn {
@@ -780,23 +792,25 @@
         </div>
     </header>
 
+    <!-- Top Action Bar -->
     <div id="action-bar">
         <button id="action-random-btn" class="footer-btn"><i class="fas fa-dice"></i><span>Random</span></button>
         <button id="action-favorites-btn" class="footer-btn"><i class="fas fa-heart"></i><span>Faves</span></button>
         <button id="action-view-btn" class="footer-btn"><i class="fas fa-table-cells-large"></i><span>Desktop View</span></button>
         <button id="action-stock-btn" class="footer-btn"><i class="fas fa-wine-bottle"></i><span>Stock</span></button>
-        <button id="action-filter-btn" class="footer-btn"><i class="fas fa-sliders"></i><span>Filters</span></button>
+        <button id="story-view-btn" class="footer-btn"><i class="fas fa-book-open"></i><span>Story View</span></button>
     </div>
 
     <main>
         <div id="menu-grid" class="carousel-view"></div>
     </main>
 
+    <!-- Bottom App Footer -->
     <footer id="app-footer">
         <div id="footer-content">
             <button id="scroll-home-btn" class="footer-btn"><i class="fas fa-house"></i><span>Home</span></button>
             <button id="scroll-prev-btn" class="footer-btn"><i class="fas fa-backward"></i><span>Rewind</span></button>
-            <button id="story-view-btn" class="footer-btn"><i class="fas fa-book-open"></i><span>Story View</span></button>
+            <button id="action-filter-btn" class="footer-btn"><i class="fas fa-sliders"></i><span>Filters</span></button>
             <button id="scroll-next-btn" class="footer-btn"><i class="fas fa-forward"></i><span>Skip</span></button>
         </div>
         <div class="text-[9px] text-amber-500/40 font-cinzel tracking-[0.15em] opacity-80 mt-1 pointer-events-none uppercase">
@@ -822,20 +836,18 @@
     </div>
 </div>
 
-<!-- Filter Modal -->
-<div id="filter-modal" class="modal fixed inset-0 bg-black/70 flex items-center justify-center p-4 hidden opacity-0 z-[60]">
-    <div class="modal-panel rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col">
-        <div class="p-5 flex-shrink-0 border-b border-teal-400/40">
-            <div class="flex justify-between items-center">
-                <h2 class="text-2xl text-amber-400" style="font-family:'Cinzel',serif">Filters</h2>
-                <button id="close-filter-btn" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
-            </div>
-            <p class="text-gray-400 mt-1 text-sm">Select filters to find your drink.</p>
+<!-- Bottom Sheet Filter Modal -->
+<div id="filter-modal" class="modal fixed inset-0 bg-black/70 flex items-end justify-center hidden opacity-0 z-[60]">
+    <div class="modal-panel w-full max-w-2xl max-h-[85vh] flex flex-col rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.8)] pb-6 pt-2">
+        <div class="w-12 h-1.5 bg-gray-500/50 rounded-full mx-auto mb-3"></div>
+        <div class="px-6 flex justify-between items-center flex-shrink-0 border-b border-amber-500/20 pb-4">
+            <h2 class="text-2xl text-amber-400 font-cinzel tracking-wider">Filter Menu</h2>
+            <button id="close-filter-btn" class="text-gray-400 hover:text-amber-400 transition-colors text-3xl leading-none">&times;</button>
         </div>
-        <div id="filter-modal-content" class="p-5 text-gray-300 overflow-y-auto"></div>
-        <div class="p-4 border-t border-white/10 flex justify-end gap-3">
-            <button id="reset-filters-btn" class="py-2 px-5 rounded-lg bg-transparent border border-gray-500 hover:bg-gray-700 text-white font-bold transition-colors">Reset All</button>
-            <button id="apply-filters-btn" class="py-2 px-5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-bold transition-colors">Show Drinks</button>
+        <div id="filter-modal-content" class="px-6 py-4 text-gray-300 overflow-y-auto custom-scrollbar"></div>
+        <div class="px-6 pt-4 mt-2 border-t border-amber-500/20 flex gap-4">
+            <button id="reset-filters-btn" class="flex-1 py-3 px-4 rounded-xl border border-gray-500 hover:bg-gray-800 text-gray-300 font-bold font-roboto uppercase tracking-wider transition-colors">Reset All</button>
+            <button id="apply-filters-btn" class="flex-1 py-3 px-4 rounded-xl bg-amber-600 hover:bg-amber-500 text-black shadow-[0_0_15px_rgba(212,175,55,0.4)] font-bold font-roboto uppercase tracking-wider transition-all">Apply</button>
         </div>
     </div>
 </div>
@@ -844,8 +856,8 @@
 <div id="favorites-modal" class="modal fixed inset-0 bg-black/70 flex items-center justify-center p-4 hidden opacity-0 z-[60]">
     <div class="modal-panel rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col">
         <div class="p-5 flex justify-between items-center flex-shrink-0 border-b border-teal-400/40">
-            <h2 class="text-2xl text-amber-400" style="font-family:'Cinzel',serif">Favorites</h2>
-            <button id="close-favorites-btn" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            <h2 class="text-2xl text-amber-400 font-cinzel tracking-wider">Favorites</h2>
+            <button id="close-favorites-btn" class="text-gray-400 hover:text-amber-400 text-3xl leading-none">&times;</button>
         </div>
         <div id="favorites-list-container" class="p-5 text-gray-300 overflow-y-auto space-y-2"></div>
     </div>
@@ -1064,7 +1076,7 @@ const MENU = [
 
 { name: "Godfather", style: "Nutty & Robust",
   pours: [
-    { slot: "Scotch — 2 oz", picks: [P("Johnnie Walker Red Label", "The real Godfather is Scotch, not bourbon")] },
+    { slot: "Scotch — 2 oz", picks: [P("John Walker Red Label", "The real Godfather is Scotch, not bourbon")] },
     { slot: "Nut — 0.75 oz", picks: [P("Amaretto", "The offer you can't refuse")] },
     { slot: "Herbal Accent (Optional)", picks: [P("Drambuie", "Turns the Godfather into a complex Rusty Compass mix")] }
   ],
@@ -1473,7 +1485,7 @@ const MENU = [
   hook: "Sometimes genius is just mixing stuff." },
 
 /* ===== THE BIG ONES ===== */
-{ name: "Long Island Iced Tea", style: "Potent Mixed Spirits",
+{ name: "Long Island", style: "Potent Mixed Spirits",
   pours: [{ slot: "Vodka — 0.5 oz", picks: [P("Skyy Vodka", "Nobody will know"), P("Grey Goose Vodka", "Nobody will know here either")] },
           { slot: "Gin — 0.5 oz", picks: [P("Beefeater Gin", "Won't dominate the glass"), P("Tanqueray Gin", "Juniper will punch through")] }],
   recipe: ["0.5 oz Vodka", "0.5 oz Gin", "0.5 oz Bacardi Rum", "0.5 oz Jose Cuervo Silver Tequila", "0.5 oz Cointreau", "1 oz Sour Mix", "Splash of Cola"],
@@ -1561,8 +1573,8 @@ const BARCODE = {
 const CARDS = [BARCODE, ...MENU];
 
 /* ---------- STATE ---------- */
-const STOCK_KEY = 'nomads_stock_v5';
-const FAVES_KEY = 'nomads_faves_v5';
+const STOCK_KEY = 'nomads_stock_v6';
+const FAVES_KEY = 'nomads_faves_v6';
 
 let barStock = {};
 let favorites = [];
@@ -1766,7 +1778,6 @@ function render() {
     if (storyView) menuGrid.querySelectorAll('.drink-card').forEach(c => c.classList.add('is-flipped'));
     updateActionBar();
 
-    // Handle floating ingredient toast
     const toast = document.getElementById('active-filter-toast');
     if (filters.ingredient) {
         toast.querySelector('span').textContent = `Showing: ${filters.ingredient}`;
@@ -1808,7 +1819,6 @@ menuGrid.addEventListener('click', e => {
     if (badge) {
         e.stopPropagation();
         const ing = badge.dataset.filterIng;
-        // Apply ingredient filter and reset others
         filters = { category: 'all', family: null, favesOnly: false, ingredient: ing };
         render();
         menuGrid.scrollTo({ left: 0, behavior: 'smooth' });
@@ -1939,17 +1949,17 @@ const FAMILIES = Object.keys(ingredientCategories.Spirits);
 
 function renderFilters() {
     document.getElementById('filter-modal-content').innerHTML = `
-        <div class="stock-sub-title">Time of Day</div>
+        <div class="stock-sub-title text-amber-500">Time of Day</div>
         <div class="flex flex-wrap gap-2">
             ${CATEGORIES.map(c => `<button class="filter-pill ${filters.category === c ? 'is-active' : ''}" data-cat="${c}">${c === 'all' ? 'All' : c}</button>`).join('')}
         </div>
-        <div class="stock-sub-title">Base Spirit</div>
+        <div class="stock-sub-title text-amber-500 mt-6">Base Spirit</div>
         <div class="flex flex-wrap gap-2">
             ${FAMILIES.map(f => `<button class="filter-pill ${filters.family === f ? 'is-active' : ''}" data-fam="${f}">${f}</button>`).join('')}
         </div>
-        <div class="stock-sub-title">Only</div>
+        <div class="stock-sub-title text-amber-500 mt-6">Specialty</div>
         <div class="flex flex-wrap gap-2">
-            <button class="filter-pill ${filters.favesOnly ? 'is-active' : ''}" data-faves="1">Favorites</button>
+            <button class="filter-pill ${filters.favesOnly ? 'is-active' : ''}" data-faves="1"><i class="fas fa-heart mr-1 text-sm"></i> Favorites Only</button>
         </div>`;
 }
 document.getElementById('filter-modal-content').addEventListener('click', e => {
@@ -1979,7 +1989,7 @@ function renderFavorites() {
         return;
     }
     el.innerHTML = favorites.slice().sort().map(n =>
-        `<div class="favorite-item" data-name="${n}"><i class="fas fa-heart text-amber-500 mr-3"></i><span>${n}</span></div>`).join('');
+        `<div class="favorite-item cursor-pointer hover:bg-gray-800 p-2 rounded-lg transition-colors" data-name="${n}"><i class="fas fa-heart text-amber-500 mr-3"></i><span class="font-bold">${n}</span></div>`).join('');
 }
 document.getElementById('favorites-list-container').addEventListener('click', e => {
     const it = e.target.closest('.favorite-item');
