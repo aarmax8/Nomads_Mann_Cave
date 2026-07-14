@@ -112,10 +112,11 @@
             height: 70px;
             padding: 0 0.5rem;
             box-sizing: border-box;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.95) 100%);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.98) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(217, 119, 6, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -129,7 +130,7 @@
             justify-content: center;
             background: transparent;
             border: none;
-            color: #ffffff; 
+            color: #e5e7eb; 
             padding: 0.25rem;
             border-radius: 0.5rem;
             cursor: pointer;
@@ -138,23 +139,27 @@
             font-size: 0.75rem;
             width: 65px; 
             line-height: 1.2;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
         }
         .footer-btn i {
             font-size: 1.25rem;
             margin-bottom: 0.1rem;
-            color: #ffffff;
-            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.9));
+            color: #d97706; /* High-end bronze/amber color */
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));
+            transition: color 0.2s ease;
         }
         .footer-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(217, 119, 6, 0.15);
+        }
+        .footer-btn:hover i {
+            color: #fbbf24;
         }
 
         #action-bar .footer-btn {
             width: 80px;
         }
         #action-bar .footer-btn i {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 0.2rem;
         }
         #action-bar .footer-btn span {
@@ -163,24 +168,19 @@
         }
 
         #action-bar .footer-btn.is-active-filter {
-            color: #f59e0b; 
+            color: #fbbf24; 
         }
         #action-bar .footer-btn.is-active-filter i {
-            color: #f59e0b; 
+            color: #fbbf24; 
+            filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
         }
         
         #action-bar #action-favorites-btn.is-active {
-            color: #f59e0b;
+            color: #fbbf24;
         }
         #action-bar #action-favorites-btn.is-active i {
-            color: #f59e0b;
-        }
-        
-        #action-bar .footer-btn:not(#action-favorites-btn) {
-             color: #f59e0b;
-        }
-        #action-bar .footer-btn:not(#action-favorites-btn) i {
-             color: #f59e0b;
+            color: #fbbf24;
+            filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
         }
         
         /* Core carousel mode (Mobile default) */
@@ -219,20 +219,20 @@
             height: 8px; 
         }
         #menu-grid::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.5); 
+            background: rgba(0,0,0,0.6); 
             border-radius: 4px;
         }
         #menu-grid::-webkit-scrollbar-thumb {
-            background-color: #f59e0b;
+            background-color: #d97706;
             border-radius: 4px;
-            border: 2px solid rgba(0,0,0,0.5); 
+            border: 2px solid rgba(0,0,0,0.6); 
         }
         #menu-grid::-webkit-scrollbar-thumb:hover {
             background-color: #fbbf24; 
         }
         #menu-grid { 
             scrollbar-width: thin;
-            scrollbar-color: #f59e0b rgba(0,0,0,0.5);
+            scrollbar-color: #d97706 rgba(0,0,0,0.6);
         }
 
         /* Drink Card Styling */
@@ -279,7 +279,7 @@
             height: 100%;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease-in-out;
             transform-style: preserve-3d;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65); 
             border-radius: 0.75rem;
         }
 
@@ -288,13 +288,13 @@
         }
         
         .drink-card.is-active .drink-card-inner {
-             box-shadow: 0 0 25px 8px rgba(45, 212, 191, 0.5);
+             box-shadow: 0 0 30px 4px rgba(217, 119, 6, 0.35);
         }
         .drink-card.is-active.is-flipped .drink-card-inner {
-             box-shadow: 0 0 25px 8px rgba(245, 158, 11, 0.5);
+             box-shadow: 0 0 30px 4px rgba(251, 191, 36, 0.35);
         }
         .drink-card.is-highlighted .drink-card-inner {
-             box-shadow: 0 0 30px 10px rgba(245, 158, 11, 0.8);
+             box-shadow: 0 0 35px 8px rgba(251, 191, 36, 0.65);
         }
         
         .drink-card-front, .drink-card-back {
@@ -309,19 +309,20 @@
             border-radius: 0.75rem;
         }
 
-        /* --- CARD FRONT (Real/Common Cocktail info) --- */
+        /* --- CARD FRONT (Real/Common Cocktail info - High-end gold embossed on leather) --- */
         .drink-card-front {
-            background-image: linear-gradient(145deg, rgba(30, 20, 20, 0.9) 0%, rgba(15, 10, 10, 0.95) 100%), url('https://raw.githubusercontent.com/aarmax8/Nomads/639ee0ed0a332926ddf78c332e7c114a32af99ab/leather%20background.jpg?raw=true');
+            background-image: linear-gradient(145deg, rgba(20, 16, 14, 0.96) 0%, rgba(10, 8, 7, 0.99) 100%), url('https://raw.githubusercontent.com/aarmax8/Nomads/639ee0ed0a332926ddf78c332e7c114a32af99ab/leather%20background.jpg?raw=true');
             background-size: cover;
             background-position: center;
-            border: 2px solid #2dd4bf; 
+            border: 2px solid rgba(217, 119, 6, 0.65); /* Elegant metallic gold/copper border */
+            box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.85);
         }
         
         .card-header-front {
             position: relative; 
-            padding: 0.75rem 3.5rem 0.5rem 1.25rem; 
+            padding: 1rem 3.5rem 0.5rem 1.25rem; 
             background: transparent; 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(217, 119, 6, 0.15);
             flex-shrink: 0;
         }
 
@@ -335,41 +336,41 @@
             justify-content: center;
         }
         .recipe-content::-webkit-scrollbar { width: 4px; }
-        .recipe-content::-webkit-scrollbar-thumb { background-color: #2dd4bf; border-radius: 4px; }
+        .recipe-content::-webkit-scrollbar-thumb { background-color: #d97706; border-radius: 4px; }
 
         .recipe-list-front { list-style: none; padding: 0; }
         .recipe-list-front li {
             display: flex; 
             align-items: center; 
             font-family: 'Roboto Condensed', sans-serif;
-            font-size: 1rem; 
-            line-height: 1.35; 
+            font-size: 1.05rem; 
+            line-height: 1.4; 
             letter-spacing: 0.02em; 
-            margin-bottom: 0.4rem; 
+            margin-bottom: 0.45rem; 
             color: #f3f4f6; 
         }
         .recipe-list-front li i { 
             width: 24px; 
             text-align: center; 
             margin-right: 0.75rem; 
-            font-size: 1.1rem; 
+            font-size: 1.15rem; 
         }
 
         /* Pour Option Badges Area */
         .card-pour-options {
             padding: 0.5rem 1.25rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.45);
+            border-top: 1px solid rgba(217, 119, 6, 0.15);
             font-family: 'Roboto Condensed', sans-serif;
             font-size: 0.8rem;
         }
 
         .card-pour-badge {
             display: inline-block;
-            padding: 0.15rem 0.4rem;
-            background: rgba(45, 212, 191, 0.15);
-            border: 1px solid rgba(45, 212, 191, 0.4);
-            color: #2dd4bf;
+            padding: 0.15rem 0.45rem;
+            background: rgba(217, 119, 6, 0.08);
+            border: 1px solid rgba(217, 119, 6, 0.45);
+            color: #fbbf24;
             border-radius: 0.25rem;
             margin-right: 0.25rem;
             margin-top: 0.25rem;
@@ -387,12 +388,12 @@
             text-align: center; 
             font-size: 1.1rem; 
             line-height: 1.4;
-            color: #2dd4bf;
-            text-shadow: 0 0 8px rgba(45, 212, 191, 0.7); 
-            padding: 0.5rem 1.25rem; 
+            color: #fbbf24;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(217, 119, 6, 0.4); 
+            padding: 0.6rem 1.25rem; 
             font-family: 'Cinzel', serif;
-            letter-spacing: 0.03em; 
-            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            letter-spacing: 0.04em; 
+            border-top: 1px solid rgba(217, 119, 6, 0.15); 
         }
 
         /* --- STORY CARD BACK (Thematic names & lore) --- */
@@ -408,7 +409,7 @@
             
             --bg-image: none;
             background-image: 
-                linear-gradient(to bottom, rgba(12, 10, 9, 0.8) 0%, transparent 20%), 
+                linear-gradient(to bottom, rgba(12, 10, 9, 0.7) 0%, transparent 20%), 
                 linear-gradient(to top, rgba(12, 10, 9, 1) 0%, rgba(12, 10, 9, 0.9) 30%, transparent 60%),
                 var(--bg-image);
 
@@ -430,10 +431,10 @@
             font-family: 'IM Fell DW Pica', serif;
             font-style: italic;
             text-align: justify;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             line-height: 1.5;
-            color: #f3f4f6; 
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9); 
+            color: #f9fafb; 
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.95); 
             max-height: 160px;
             overflow-y: auto;
             padding-right: 0.5rem; 
@@ -452,8 +453,8 @@
         }
         .card-footer-back {
              padding: 0.5rem 0.75rem;
-             background: rgba(0,0,0,0.5);
-             border-top: 2px double rgba(180, 83, 9, 0.5);
+             background: rgba(0,0,0,0.65);
+             border-top: 2px double rgba(180, 83, 9, 0.6);
              font-style: normal;
              display: flex;
              justify-content: center;
@@ -462,7 +463,7 @@
              font-family: 'Cinzel', serif;
              font-size: 1.25rem;
              color: #fbbf24;
-             text-shadow: 0 0 8px rgba(245, 158, 11, 0.8);
+             text-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
              z-index: 2; 
              flex-shrink: 0; 
         }
@@ -471,8 +472,8 @@
         .favorite-btn {
             position: absolute;
             z-index: 10;
-            background: rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(217, 119, 6, 0.4);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -492,7 +493,8 @@
         }
         .favorite-btn:hover {
             transform: scale(1.1);
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.9);
+            border-color: #fbbf24;
         }
         .favorite-btn .fa-heart {
             font-size: 1.2rem;
@@ -500,55 +502,54 @@
             transition: all 0.2s ease;
         }
         .favorite-btn.is-favorite .fa-heart {
-            color: #f59e0b;
-            text-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
+            color: #fbbf24;
+            text-shadow: 0 0 8px rgba(251, 191, 36, 0.8);
         }
 
         #favorites-list-container .favorite-item {
             display: flex;
             align-items: center;
             padding: 0.75rem 1rem;
-            background: rgba(245, 158, 11, 0.05);
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            background: rgba(217, 119, 6, 0.08);
+            border: 1px solid rgba(217, 119, 6, 0.25);
             border-radius: 0.5rem;
             cursor: pointer;
             transition: background-color 0.2s ease;
         }
         #favorites-list-container .favorite-item:hover {
-            background: rgba(245, 158, 11, 0.15);
+            background: rgba(217, 119, 6, 0.18);
         }
         
         .drink-card.is-unavailable { opacity: 0.35; pointer-events: none; }
         
         .drink-card-title {
-            font-size: 1.85rem; 
-            line-height: 1.2; 
-            color: #f59e0b; 
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.75rem; 
+            line-height: 1.25; 
+            color: #fbbf24; 
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(245, 158, 11, 0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 8px rgba(217, 119, 6, 0.45);
             padding-bottom: 0.25rem; 
         }
-        .drink-card[data-is-barcode="true"] .drink-card-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.75rem;
-        }
-
+        
         .drink-card[data-is-barcode="true"] .drink-card-front {
-            background-color: #0a0a0a;
-            border: 3px double #444444;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+            background-color: #0f0b08;
+            border: 3px double rgba(217, 119, 6, 0.5);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.85);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center; 
-            padding: 1rem;
+            padding: 1.25rem;
             gap: 1rem;
         }
         .drink-card[data-is-barcode="true"] img {
-            width: 100%;
+            width: 80%;
             border-radius: 0.5rem;
             object-fit: contain;
-            max-height: 60%;
+            max-height: 55%;
+            border: 1px solid rgba(217, 119, 6, 0.25);
         }
 
         #app-footer {
@@ -559,11 +560,11 @@
             padding-top: 10px;
             min-height: calc(50px + 10px + (env(safe-area-inset-bottom) * 0.6));
             box-sizing: border-box; 
-            background-color: rgba(15, 15, 15, 0.5);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(15, 12, 10, 0.7);
+            border-top: 1px solid rgba(217, 119, 6, 0.2);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center; 
@@ -584,14 +585,14 @@
         #app-footer #scroll-prev-btn span,
         #app-footer #scroll-next-btn i,
         #app-footer #scroll-next-btn span {
-            color: #2dd4bf;
+            color: #fbbf24;
         }
         
         #app-footer #scroll-home-btn {
-            color: #2dd4bf;
+            color: #fbbf24;
         }
         #app-footer #scroll-home-btn i {
-            color: #2dd4bf;
+            color: #fbbf24;
         }
         
         #splash-screen {
@@ -618,12 +619,12 @@
         .splash-text {
             font-family: 'Cinzel', serif;
             font-size: 1.25rem;
-            color: #e5e7eb;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 5px rgba(0, 0, 0, 1);
-            background-color: rgba(0,0,0,0.6);
+            color: #fbbf24;
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.6), 0 0 5px rgba(0, 0, 0, 1);
+            background-color: rgba(15, 12, 10, 0.85);
             padding: 0.75rem 1.75rem;
             border-radius: 9999px;
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(217, 119, 6, 0.4);
             animation: pulse-text 2.5s infinite;
             margin-bottom: calc(15vh + env(safe-area-inset-bottom));
         }
@@ -633,8 +634,8 @@
         }
         
         .filter-pill {
-            background-color: rgba(255, 255, 255, 0.05); 
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.5); 
+            border: 1px solid rgba(217, 119, 6, 0.3);
             color: #d1d5db; 
             padding: 0.4rem 0.85rem;
             border-radius: 9999px; 
@@ -647,24 +648,26 @@
             text-shadow: 0 0 5px rgba(0,0,0,0.5);
         }
         .filter-pill:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(217, 119, 6, 0.15);
+            border-color: rgba(217, 119, 6, 0.6);
         }
         .filter-pill.is-active {
-            background-color: #f59e0b; 
+            background-color: #d97706; 
             border: 1px solid #fbbf24; 
             color: #111827; 
-            box-shadow: 0 0 10px rgba(245, 158, 11, 0.7); 
+            box-shadow: 0 0 12px rgba(217, 119, 6, 0.5); 
             transform: scale(1.05);
             text-shadow: none;
         }
 
         .modal-panel {
             background-image: 
-                linear-gradient(to top, rgba(17, 17, 17, 0.98) 0%, rgba(17, 17, 17, 0.75) 30%, rgba(17, 17, 17, 0.95) 100%), 
+                linear-gradient(to top, rgba(15, 12, 10, 0.99) 0%, rgba(15, 12, 10, 0.85) 30%, rgba(15, 12, 10, 0.97) 100%), 
                 url('https://raw.githubusercontent.com/aarmax8/Nomads/c494fdd916aac964350c8174aa9fd9a37f7f09b7/thumbnail_IMG_8263.jpg?raw=true');
             background-size: cover;
             background-position: center;
-            border: 2px solid #2dd4bf; 
+            border: 2px solid rgba(217, 119, 6, 0.6); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
         }
         
         /* Table of Contents layouts */
@@ -677,15 +680,15 @@
             gap: 0.5rem; 
         }
         .barcode-back-content::-webkit-scrollbar { width: 6px; }
-        .barcode-back-content::-webkit-scrollbar-thumb { background-color: #f59e0b; border-radius: 3px; }
+        .barcode-back-content::-webkit-scrollbar-thumb { background-color: #d97706; border-radius: 3px; }
 
         .toc-item {
             padding: 0.75rem 1rem; 
             border-radius: 0.5rem; 
-            background: rgba(0, 0, 0, 0.5); 
+            background: rgba(0, 0, 0, 0.7); 
             cursor: pointer;
             text-align: center;
-            font-size: 1.1rem; 
+            font-size: 1.15rem; 
             font-weight: 700;
             line-height: 1.2;
             transition: background-color 0.2s, transform 0.1s;
@@ -693,29 +696,30 @@
         }
 
         .toc-item:hover {
-            background-color: rgba(0, 0, 0, 0.75);
+            background-color: rgba(15, 12, 10, 0.9);
             transform: scale(1.02);
+            border-color: #fbbf24 !important;
         }
         .toc-category-header {
             font-family: 'Rye', serif;
             font-size: 1.4rem;
-            color: #2dd4bf; 
+            color: #fbbf24; 
             text-align: center;
             padding: 0.5rem 0;
             margin-top: 1rem;
-            border-bottom: 2px solid #2dd4bf;
+            border-bottom: 2px solid rgba(217, 119, 6, 0.5);
         }
 
         /* Focused Image Alignments */
-        .drink-card[data-name="Mechanic"] .drink-card-back { background-position: center, center, right; }
+        .drink-card[data-name="Jäger Mule"] .drink-card-back { background-position: center, center, right; }
         .drink-card[data-name="Dirty Martini"] .drink-card-back { background-position: center, center, right; }
-        .drink-card[data-name="Caramel Apple Cruiser"] .drink-card-back,
-        .drink-card[data-name="Statesman"] .drink-card-back { background-position: center, center, right; }
-        .drink-card[data-name="Kraken's Grip"] .drink-card-back,
-        .drink-card[data-name="Mamie Taylor"] .drink-card-back,
-        .drink-card[data-name="Rusty Blade"] .drink-card-back,
-        .drink-card[data-name="Spiced Rum Buck"] .drink-card-back,
-        .drink-card[data-name="Whiskey Highball"] .drink-card-back { background-position: center, center, left; }
+        .drink-card[data-name="Caramel Apple Shot"] .drink-card-back,
+        .drink-card[data-name="Sazerac"] .drink-card-back { background-position: center, center, right; }
+        .drink-card[data-name="Amaretto Sour"] .drink-card-back,
+        .drink-card[data-name="Scotch & Sprite"] .drink-card-back,
+        .drink-card[data-name="Old Fashioned"] .drink-card-back,
+        .drink-card[data-name="Cuba Libre"] .drink-card-back,
+        .drink-card[data-name="Scotch Highball"] .drink-card-back { background-position: center, center, left; }
     </style>
 </head>
 <body class="antialiased text-gray-300">
@@ -791,11 +795,11 @@
     </div>
 
     <!-- Favorites Modal -->
-    <div id="favorites-modal" class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 hidden opacity-0 z-50">
+    <div id="favorites-modal" class="modal fixed inset-0 bg-black/75 flex items-center justify-center p-4 hidden opacity-0 z-50 transition-opacity duration-300">
         <div class="modal-panel rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
             <div class="modal-header p-6 flex-shrink-0">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-3xl text-amber-400 font-cinzel tracking-wider">Favorites</h2>
+                    <h2 class="text-3xl text-amber-500 font-cinzel tracking-wider">Favorites</h2>
                     <button id="close-favorites-btn" class="text-gray-400 hover:text-white text-3xl">&times;</button>
                 </div>
             </div>
@@ -804,10 +808,10 @@
     </div>
 
     <!-- Bar Stock Modal -->
-    <div id="bar-stock-modal" class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 hidden opacity-0 z-50">
+    <div id="bar-stock-modal" class="modal fixed inset-0 bg-black/75 flex items-center justify-center p-4 hidden opacity-0 z-50 transition-opacity duration-300">
         <div class="modal-panel rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
             <div class="modal-header p-6 flex justify-between items-center flex-shrink-0">
-                <h2 class="text-3xl text-amber-400 font-cinzel tracking-wider">Bar Stock</h2>
+                <h2 class="text-3xl text-amber-500 font-cinzel tracking-wider">Bar Stock</h2>
                 <button id="close-stock-btn" class="text-gray-400 hover:text-white text-3xl">&times;</button>
             </div>
             <div id="bar-stock-content" class="p-6 text-gray-300 flex-grow min-h-0 overflow-y-auto"></div>
@@ -815,11 +819,11 @@
     </div>
     
     <!-- Filter Modal -->
-    <div id="filter-modal" class="modal fixed inset-0 bg-black/60 flex items-center justify-center p-4 hidden opacity-0 z-50">
+    <div id="filter-modal" class="modal fixed inset-0 bg-black/75 flex items-center justify-center p-4 hidden opacity-0 z-50 transition-opacity duration-300">
         <div class="modal-panel rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
             <div class="modal-header p-6 flex-shrink-0">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-3xl text-amber-400 font-cinzel tracking-wider">Browse The Deck</h2>
+                    <h2 class="text-3xl text-amber-500 font-cinzel tracking-wider">Browse The Deck</h2>
                     <button id="close-filter-btn" class="text-gray-400 hover:text-white text-3xl">&times;</button>
                 </div>
                 <p class="text-gray-400 mt-2">Select filters to find your drink.</p>
@@ -827,7 +831,7 @@
             <div id="filter-modal-content" class="p-6 text-gray-300 overflow-y-auto"></div>
             <div class="p-4 border-t border-white/10 flex justify-end gap-4">
                 <button id="reset-filters-btn" class="py-2 px-6 rounded-lg bg-transparent border border-gray-500 hover:bg-gray-700 text-white font-bold transition-colors">Reset</button>
-                <button id="apply-filters-btn" class="py-2 px-6 rounded-lg bg-amber-600 hover:bg-amber-500 text-black font-bold transition-colors">Show Drinks</button>
+                <button id="apply-filters-btn" class="py-2 px-6 rounded-lg bg-amber-700 hover:bg-amber-600 text-black font-bold transition-colors">Show Drinks</button>
             </div>
         </div>
     </div>
@@ -835,8 +839,8 @@
     <script>
         "use strict";
 
-        const STOCK_STORAGE_KEY = 'nomads_bar_stock_v4';
-        const DRINKS_FAVORITES_KEY = 'nomads_favorite_drinks_v3';
+        const STOCK_STORAGE_KEY = 'nomads_bar_stock_v5';
+        const DRINKS_FAVORITES_KEY = 'nomads_favorite_drinks_v4';
         
         let cocktails = [];
         let favoriteDrinks = [];
@@ -854,16 +858,14 @@
         let menuGrid, barStockModal, filterModal, favoritesModal, randomDrinkBtn;
 
         /**
-         * STREAMING_CHUNK: Standardizing common bar drinks database
+         * STREAMING_CHUNK: Generating drink database entries
          */
         function getInitialCocktailData() {
             return [
-                { name: "Placeholder", recipe: [], isBarcode: true, story: "", flavorProfile: "", pours: [] },
-
                 { 
                     name: "Redheaded Slut", 
                     flavorProfile: "Like a sweet peach that got into a fistfight with Jäger. The Jäger won.", 
-                    recipe: ["1 oz Jägermeister", "1 oz Peach Schnapps", "Fill glass with Cranberry Juice"], 
+                    recipe: ["1 oz Jägermeister", "1 oz Peach Schnapps", "Fill with Cranberry Juice"], 
                     story: "Redheaded Trouble: Named in honor of the bar fight started by a guy who told our baldest member he liked his 'fiery red hair.' Turns out it was a wig he was sensitive about. The ensuing chaos was beautiful.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/c8d1eb3f9af90ec4f55951765f680513fe3bf164/frontend/R.jpg", 
                     cardHook: "Some ghosts just want to party.",
@@ -881,7 +883,7 @@
                 { 
                     name: "Tom Collins", 
                     flavorProfile: "Crisp, effervescent botanical classic with a bright lemon zest lift.", 
-                    recipe: ["2 oz Gin", "1 oz Lemon Juice", "0.75 oz Simple Syrup", "Top with Club Soda", "Cherry on Top"], 
+                    recipe: ["2 oz Gin", "1 oz Lemon Juice", "0.75 oz Simple Syrup", "Top with Club Soda", "Cherries on Top"], 
                     story: "Negroni Twist: This isn't one of ours. We 'borrowed' the recipe from a fancy Italian bar after our President complimented the bartender's leather jacket... and then 'traded' him for it.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/90ba0d71f42b567f7e9a417fbd74cedfc805201e/thumbnail_IMG_8004.jpg", 
                     cardHook: "Bubbly, botanical, and completely classic.",
@@ -890,7 +892,7 @@
                 { 
                     name: "Jäger Mule", 
                     flavorProfile: "It's green, it's mean, and it tastes like Jäger and sour orchard fruits.", 
-                    recipe: ["1.5 oz Jägermeister", "0.5 oz Apple Pucker", "Fill glass with Sprite", "Splash of Lime Juice"], 
+                    recipe: ["1.5 oz Jägermeister", "0.5 oz Apple Pucker", "Fill with Sprite", "Splash of Lime Juice"], 
                     story: "Mechanic: Sal, our mechanic, calls this 'motivation.' He says the neon green reminds him of brand-new coolant, which is the only thing that gets him excited. We're worried about Sal.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/71f80d842e362733e8b2f22ea02e7b1fc732f0a9/mannart17.jpg", 
                     cardHook: "Tastes better than degreaser. Probably.",
@@ -899,7 +901,7 @@
                 { 
                     name: "Cherry Vodka Sour", 
                     flavorProfile: "Dangerously red. Tastes like a cherry candy that went to college and got a drinking problem.", 
-                    recipe: ["1.5 oz Vodka", "1 oz Cherry Schnapps", "Fill glass with Sweet and Sour Mix", "Splash of Lime Juice"], 
+                    recipe: ["1.5 oz Vodka", "1 oz Cherry Schnapps", "Fill with Sweet and Sour Mix", "Splash of Lime Juice"], 
                     story: "Redline Riot: A tribute to the time we tried to see if a cherry-red '78 Sportster could actually hit the redline in first gear without exploding. It could not. This drink is less expensive to clean up.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/90ba0d71f42b567f7e9a417fbd74cedfc805201e/thumbnail_IMG_8306.jpg", 
                     cardHook: "Here's to things we can't talk about.",
@@ -908,7 +910,7 @@
                 { 
                     name: "Rum Punch", 
                     flavorProfile: "Warm spiced rum with a sharp lime kick and a sweet fruit finish.", 
-                    recipe: ["2 oz Rum", "2 oz Orange Juice", "2.5 oz Pineapple Juice", "0.5 oz Grenadine", "Cherry on Top"], 
+                    recipe: ["2 oz Rum", "2 oz Orange Juice", "2.5 oz Pineapple Juice", "0.5 oz Grenadine", "Cherries on Top"], 
                     story: "Panhead Kick: This drink has all the stages of trying to kickstart a stubborn old Panhead: spicy anger, a sharp kick of frustration, and sweet relief when it roars to life.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/0dcbab77d90f59f2298642338dfee691353ce70a/frontend/USq6nI.jpg", 
                     cardHook: "A more reliable way to get started.",
@@ -917,7 +919,7 @@
                 { 
                     name: "Shirley Temple", 
                     flavorProfile: "It's Sprite and cherry. Zero alcohol. Tastes like childhood and judgment.", 
-                    recipe: ["Fill glass with Sprite", "Splash of Grenadine", "Cherry on Top"], 
+                    recipe: ["Fill with Sprite", "Splash of Grenadine", "Cherries on Top"], 
                     story: "The Crusher's Choice: Our biggest, meanest member, Crusher, orders this. Not for his kid. For himself. He says it 'calms his inner rage.' You WILL NOT make fun of him.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/90ba0d71f42b567f7e9a417fbd74cedfc805201e/thumbnail_IMG_7989.jpg", 
                     cardHook: "The toughest drink in the bar.",
@@ -926,7 +928,7 @@
                 { 
                     name: "Dark 'n' Stormy", 
                     flavorProfile: "Dark, moody rum meets spicy ginger and a crack of lime.", 
-                    recipe: ["2 oz Rum", "0.5 oz Lime Juice", "2 dashes Angostura Bitters", "Fill glass with Sprite"], 
+                    recipe: ["2 oz Rum", "0.5 oz Lime Juice", "2 dashes Angostura Bitters", "Fill with Sprite"], 
                     story: "Tornado Alley: We dared our prospect to ride through a tornado warning. He came back an hour later, clothes torn, hair standing on end, holding a bottle of dark rum he 'found'.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/19071808632f94b0b81d595f74f700f0.jpg", 
                     cardHook: "To making bad weather worse.",
@@ -935,7 +937,7 @@
                 { 
                     name: "Amaretto Sour", 
                     flavorProfile: "A sweet almond-forward classic balanced with crisp lemon citrus.", 
-                    recipe: ["2 oz Amaretto", "1 oz Lemon Juice", "0.75 oz Simple Syrup", "Cherry on Top"], 
+                    recipe: ["2 oz Amaretto", "1 oz Lemon Juice", "0.75 oz Simple Syrup", "Cherries on Top"], 
                     story: "Kraken's Grip: After two of these, you'll have a death grip on the bar and the questionable belief that you can arm-wrestle a sea monster. You can't. Ask Fingers, he's got the scars.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/c7fd6a017b5f1a4a26d81720d989dd1cccfca51c/mannart14.jpg", 
                     cardHook: "It'll get a hold on you.",
@@ -953,7 +955,7 @@
                 { 
                     name: "Malibu Sunset", 
                     flavorProfile: "It's coconut rum and pineapple. Tastes like a tropical vacation you can't afford.", 
-                    recipe: ["2 oz Rum", "Fill with Pineapple Juice", "Splash of Grenadine", "Cherry on Top"], 
+                    recipe: ["2 oz Rum", "Fill with Pineapple Juice", "Splash of Grenadine", "Cherries on Top"], 
                     story: "Beach Cruiser: This is for the guy who wears a Hawaiian shirt under his leather cut. He talks about riding to the keys, but we all know he's just going to the tourist trap on the pier.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/c3832f3a3d3d7a73ddff445c272953dc90cb5c4d/mannart21.jpg", 
                     cardHook: "A vacation in a glass.",
@@ -962,7 +964,7 @@
                 { 
                     name: "Appletini", 
                     flavorProfile: "A shockingly green blast of sour apple and clean vodka. Tastes like a dare.", 
-                    recipe: ["1 oz Sweet and Sour Mix", "1 oz Apple Pucker", "2 oz Vodka", "Cherry on Top"], 
+                    recipe: ["1 oz Sweet and Sour Mix", "1 oz Apple Pucker", "2 oz Vodka", "Cherries on Top"], 
                     story: "The Prospect's Bane: This drink is too green to be safe and too sweet to be sober. It's what the rival club drinks when they think they're being subtle.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/1e1c514fd7e07a421ae95d827c230b7fea504fa7/aabuckeyecider.jpg", 
                     cardHook: "Boldly green, deeply potent.",
@@ -1007,7 +1009,7 @@
                 { 
                     name: "Tequila Sunrise", 
                     flavorProfile: "Sweet orange juice and dynamic tequila layered with rich grenadine.", 
-                    recipe: ["2 oz Tequila", "Fill with Orange Juice", "2 dashes Orange Bitters", "0.5 oz Grenadine", "Cherry on Top"], 
+                    recipe: ["2 oz Tequila", "Fill with Orange Juice", "2 dashes Orange Bitters", "0.5 oz Grenadine", "Cherries on Top"], 
                     story: "Desert Sunrise: The only time you should see a desert sunrise is because you've been riding all night. This drink lets you skip the riding part.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/c8d1eb3f9af90ec4f55951765f680513fe3bf164/thumbnail_IMG_8003.jpg", 
                     cardHook: "All the beauty, none of the early morning.",
@@ -1016,7 +1018,7 @@
                 { 
                     name: "Paloma", 
                     flavorProfile: "Zesty, salty tequila classic sweetened with refreshing, fizzy citrus.", 
-                    recipe: ["2 oz Tequila", "0.75 oz Lime Juice", "0.5 oz Simple Syrup", "Fill glass with Sprite", "Pinch of Salt"], 
+                    recipe: ["2 oz Tequila", "0.75 oz Lime Juice", "0.5 oz Simple Syrup", "Fill with Sprite", "Pinch of Salt"], 
                     story: "Gilded Serpent: Looks fancy. Tastes fancy. But it's still tequila. It's like putting a tuxedo on a snake. You know it's gonna bite you eventually.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/67bab4c8460e76ee5bd5fe757150ef26--bike-art-motorcycle-art.jpg", 
                     cardHook: "Fancy on the outside, dangerous on the inside.",
@@ -1097,7 +1099,7 @@
                 { 
                     name: "Whiskey Coke", 
                     flavorProfile: "Rich blended whiskey mixed with standard classic bubbly Coke.", 
-                    recipe: ["2 oz Whiskey", "Fill glass with Coke"], 
+                    recipe: ["2 oz Whiskey", "Fill with Coke"], 
                     story: "Ward Eight: This is what happens when you try to make 'Jungle Juice' with actual high-end blended whiskey. It's dangerously drinkable. A frontier of bad decisions awaits.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/4ef937229693734b1be907cc24f322eb.jpg", 
                     cardHook: "History, but with more sugar.",
@@ -1106,7 +1108,7 @@
                 { 
                     name: "Whiskey Sour", 
                     flavorProfile: "A rich, velvety whiskey classic balanced with fresh-pressed citrus.", 
-                    recipe: ["2 oz Whiskey", "0.75 oz Lemon Juice", "0.75 oz Simple Syrup", "2 dashes Angostura Bitters", "Cherry on Top"], 
+                    recipe: ["2 oz Whiskey", "0.75 oz Lemon Juice", "0.75 oz Simple Syrup", "2 dashes Angostura Bitters", "Cherries on Top"], 
                     story: "The High-Sided: Named after a famous Parisian magazine, our version is for the man about the chop shop. It's sophisticated, strong, and guaranteed to loosen the tongue.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/8152e3c111a698e2a7f072b33b5662906e08d17d/mannart24.jpg", 
                     cardHook: "The official drink of the well-dressed nomad.",
@@ -1124,7 +1126,7 @@
                 { 
                     name: "Whiskey Cherry Coke", 
                     flavorProfile: "A boozy, bubbly cherry Coke. It's the drink version of a classic muscle car.", 
-                    recipe: ["2 oz Whiskey", "0.5 oz Cherry Schnapps", "Fill glass with Coke"], 
+                    recipe: ["2 oz Whiskey", "0.5 oz Cherry Schnapps", "Fill with Coke"], 
                     story: "Black Cherry Bomb: This isn't a drink, it's an escalation. It starts with whiskey, adds some cherry, and ends with you thinking it's a good idea to see if your bike can do a burnout on the bar. It can't.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/5a6b0379f72b6c8fb2751409d48ac8fa.jpg", 
                     cardHook: "Tastes like minor property damage.",
@@ -1133,7 +1135,7 @@
                 { 
                     name: "Fuzzy Navel", 
                     flavorProfile: "Extremely simple, refreshing, and sweet peach-and-citrus classic.", 
-                    recipe: ["1.5 oz Peach Schnapps", "Fill glass with Orange Juice"], 
+                    recipe: ["1.5 oz Peach Schnapps", "Fill with Orange Juice"], 
                     story: "Southern Crossroads: This is the drink for when you have two bad options. It's sweet enough to make you forget you're making a choice, and strong enough to make you not care.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/90ba0d71f42b567f7e9a417fbd74cedfc805201e/thumbnail_IMG_8294.jpg", 
                     cardHook: "For making the wrong choices.",
@@ -1178,7 +1180,7 @@
                 { 
                     name: "Moscow Mule", 
                     flavorProfile: "Crisp vodka, sharp lime, and sweet Sprite soda with a dash of bitters.", 
-                    recipe: ["2 oz Vodka", "0.5 oz Lime Juice", "2 dashes Angostura Bitters", "Fill glass with Sprite"], 
+                    recipe: ["2 oz Vodka", "0.5 oz Lime Juice", "2 dashes Angostura Bitters", "Fill with Sprite"], 
                     story: "The Kickstand: It's crisp, it's spicy, and it kicks you right in the teeth when you're not expecting it. Just like our club's lawyer. We prefer the drink.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/c143359dbf62f9ce9349aa42e3bfe8aa.jpg", 
                     cardHook: "It's got a kick.",
@@ -1196,7 +1198,7 @@
                 { 
                     name: "Screwdriver", 
                     flavorProfile: "Simple, historic pairing of clean vodka and orange juice with a dash of bitters.", 
-                    recipe: ["2 oz Vodka", "2 dashes Orange Bitters", "Fill glass with Orange Juice"], 
+                    recipe: ["2 oz Vodka", "2 dashes Orange Bitters", "Fill with Orange Juice"], 
                     story: "The Hubcap: Our mechanic insists this is a legitimate cocktail. We're pretty sure it's just what he drinks when he runs out of clean glasses and has to mix it in a hubcap.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/cfff51feaf6082d29a37912a44bfedc3.jpg", 
                     cardHook: "The second-best use for a screwdriver.",
@@ -1205,7 +1207,7 @@
                 { 
                     name: "Old Fashioned", 
                     flavorProfile: "Rich whiskey notes balanced elegantly with aromatic bitters and sugar.", 
-                    recipe: ["2 oz Whiskey", "0.75 oz Simple Syrup", "2 dashes Angostura Bitters", "Cherry on Top"], 
+                    recipe: ["2 oz Whiskey", "0.75 oz Simple Syrup", "2 dashes Angostura Bitters", "Cherries on Top"], 
                     story: "Rusty Blade: A traditional Old Fashioned. It's sharp, sweet, and means business. What you drink after you've just won a knife fight over a prime parking spot.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/90ba0d71f42b567f7e9a417fbd74cedfc805201e/thumbnail_IMG_8220.jpg", 
                     cardHook: "The sharpest blade is a sharp mind.",
@@ -1223,7 +1225,7 @@
                 { 
                     name: "Cuba Libre", 
                     flavorProfile: "A highball rum and Coke brightened with fresh-cracked lime juice.", 
-                    recipe: ["2 oz Rum", "0.5 oz Lime Juice", "2 dashes Angostura Bitters", "Fill glass with Coke"], 
+                    recipe: ["2 oz Rum", "0.5 oz Lime Juice", "2 dashes Angostura Bitters", "Fill with Coke"], 
                     story: "The Getaway: Means 'Free Cuba.' We drank it to celebrate freeing our club mascot, a grumpy bulldog named Che, from the local dog catcher. It was a whole thing. The dog was not grateful.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/d9a9ffbd510d7ea900f31195d5e857f6.jpg", 
                     cardHook: "Tastes like a good road trip.",
@@ -1241,7 +1243,7 @@
                 { 
                     name: "Long Island Iced Tea", 
                     flavorProfile: "Tastes like sweet tea. Contains no tea. A strong mix of five clear spirits.", 
-                    recipe: ["0.5 oz Vodka", "0.5 oz Gin", "0.5 oz Rum", "0.5 oz Tequila", "0.5 oz Triple Sec", "1 oz Lemon Juice", "Fill glass with Coke"], 
+                    recipe: ["0.5 oz Vodka", "0.5 oz Gin", "0.5 oz Rum", "0.5 oz Tequila", "0.5 oz Triple Sec", "1 oz Lemon Juice", "Fill with Coke"], 
                     story: "The Multi-Tool: This isn't a drink, it's a dare. It's a mix of everything that will get you into trouble, served in a glass. The only 'tea' involved is the 'T-rouble' you'll be in tomorrow.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/c8d1eb3f9af90ec4f55951765f680513fe3bf164/mannart7.jpg", 
                     cardHook: "A beautiful, delicious lie.",
@@ -1295,7 +1297,7 @@
                 { 
                     name: "Scotch & Coke", 
                     flavorProfile: "Smoky scotch paired with sweet, bubbly Coke.", 
-                    recipe: ["2 oz Scotch Whisky", "Fill glass with Coke"], 
+                    recipe: ["2 oz Scotch Whisky", "Fill with Coke"], 
                     story: "Crossroads Deal: At the crossroads, you can sell your soul for talent. Or, if you're like Mike, you can accidentally trade it for a half-empty bottle of amaretto. This drink commemorates his poor negotiating skills.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/90ba0d71f42b567f7e9a417fbd74cedfc805201e/thumbnail_IMG_7992.jpg", 
                     cardHook: "To making good deals.",
@@ -1313,7 +1315,7 @@
                 { 
                     name: "Tequila Sour", 
                     flavorProfile: "Standard sweet tequila classic balanced cleanly with sour citrus elements.", 
-                    recipe: ["2 oz Tequila", "0.75 oz Lemon Juice", "0.75 oz Simple Syrup", "Cherry on Top"], 
+                    recipe: ["2 oz Tequila", "0.75 oz Lemon Juice", "0.75 oz Simple Syrup", "Cherries on Top"], 
                     story: "High Noon: This one's for when the sun is high and mercy is low. It's sharp, it's bittersweet, and it's got the kick you need to face the rest of the day. We call it the 'Duelist's Drink'.", 
                     image: "https://raw.githubusercontent.com/aarmax8/Nomads/146cb26058c450290759bf6a90ecaf84a18fc47b/frontend/271d97ccf4324f5c3e3d7ec301c4fcc8.jpg", 
                     cardHook: "The drink of champions. And losers.",
@@ -1386,7 +1388,7 @@
         }
 
         /**
-         * STREAMING_CHUNK: Setting up ingredient database categories and tiers
+         * STREAMING_CHUNK: Structuring stock tracking profiles
          */
         function getIngredientCategories() {
             return {
@@ -1414,14 +1416,6 @@
                 }
             };
         }
-
-        const titleFonts = [
-            'Rye', 
-            'Cinzel', 
-            'Black Ops One', 
-            'IM Fell DW Pica', 
-            'Roboto Condensed'
-        ];
 
         function parseIngredientName(ingStr) {
             if (typeof ingStr !== 'string') return null;
@@ -1466,43 +1460,37 @@
         }
 
         /**
-         * STREAMING_CHUNK: Refining category structure and setting up primary spirit profiles
+         * STREAMING_CHUNK: Processing categories with protective rules for Butterscotch vs Scotch
          */
         function setupCocktailData() {
             const initialCocktails = getInitialCocktailData();
 
             const processedCocktails = initialCocktails.map((cocktail) => {
-                if (cocktail.isBarcode) return cocktail;
-
                 const recipeString = cocktail.recipe.join(' ').toLowerCase();
                 const nameLower = cocktail.name.toLowerCase();
                 
                 let category = "Liqueurs";
                 let primarySpirit = "Liqueurs";
-                let titleColor = "#f472b6"; // default pink for liqueurs
+                let titleColor = "#fbbf24"; // standard gold
 
                 // Check for Shirley Temple
                 if (cocktail.name === "Shirley Temple") {
                     category = "Non-Alcoholic";
                     primarySpirit = "Mocktails";
-                    titleColor = "#9ca3af";
                 }
-                // 1. Brandy (Check brandy first so multi-spirit drinks like Between the Sheets group as Brandy)
+                // 1. Brandy
                 else if (recipeString.includes('brandy')) {
                     category = "Brandy";
                     primarySpirit = "Brandy";
-                    titleColor = "#c084fc";
                 }
-                // 2. Scotch
-                else if (recipeString.includes('scotch')) {
+                // 2. Scotch (Verify explicitly that Butterscotch is not grouped as Scotch!)
+                else if (recipeString.includes('scotch') && !recipeString.includes('butterscotch')) {
                     category = "Scotch";
                     primarySpirit = "Scotch";
-                    titleColor = "#FF8C00";
                 }
                 // 3. Whiskey / Bourbon / Southern Comfort
                 else if (recipeString.includes('whiskey') || recipeString.includes('bourbon') || recipeString.includes('southern comfort') || recipeString.includes('old grand-dad') || recipeString.includes('jim beam')) {
                     category = "Whiskey";
-                    titleColor = "#FF4500";
                     if (recipeString.includes('coke')) {
                         primarySpirit = "Low-End Whiskey";
                     } else if (['old fashioned', 'godfather', 'sazerac'].includes(nameLower)) {
@@ -1515,73 +1503,58 @@
                 else if (recipeString.includes('tequila')) {
                     category = "Tequila";
                     primarySpirit = "Tequila";
-                    titleColor = "#fbbf24";
                 }
                 // 5. Rum
                 else if (recipeString.includes('rum')) {
                     category = "Rum";
                     primarySpirit = "Rum";
-                    titleColor = "#f59e0b";
                 }
                 // 6. Gin
                 else if (recipeString.includes('gin') && !recipeString.includes('sloe gin')) {
                     category = "Gin";
                     primarySpirit = "Gin";
-                    titleColor = "#4ade80";
                 }
                 // 7. Vodka
                 else if (recipeString.includes('vodka')) {
                     category = "Vodka";
                     primarySpirit = "Vodka";
-                    titleColor = "#38bdf8";
                 }
-                // 8. Sloe Gin / Sweet Liqueurs
-                else if (recipeString.includes('sloe gin') || recipeString.includes('amaretto') || recipeString.includes('schnapps') || recipeString.includes('pucker') || recipeString.includes('jägermeister') || recipeString.includes('kahlúa') || recipeString.includes('baileys') || recipeString.includes('aperol')) {
+                // 8. Liqueurs & Sweet Classics
+                else if (recipeString.includes('sloe gin') || recipeString.includes('amaretto') || recipeString.includes('schnapps') || recipeString.includes('pucker') || recipeString.includes('jägermeister') || recipeString.includes('kahlúa') || recipeString.includes('baileys') || recipeString.includes('aperol') || recipeString.includes('butterscotch')) {
                     category = "Liqueurs";
                     primarySpirit = "Liqueurs";
-                    titleColor = "#f472b6";
                 }
 
                 return { ...cocktail, category, titleColor, primarySpirit };
             });
 
             cocktails = processedCocktails;
-            cocktails.sort((a, b) => {
-                if (a.isBarcode) return -1;
-                if (b.isBarcode) return 1;
-                return a.name.localeCompare(b.name);
-            });
+            cocktails.sort((a, b) => a.name.localeCompare(b.name));
 
-            const barcodeCard = cocktails.find(c => c.isBarcode);
-            if (!barcodeCard) {
-                const newBarcode = {
-                    name: "Scan to Connect",
-                    isBarcode: true,
-                    image: 'https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.JPG',
-                    recipe: [],
-                    flavorProfile: "A gateway to the digital road.",
-                    cardHook: "Point your camera here.",
-                    category: "Non-Alcoholic",
-                    titleColor: '#f59e0b',
-                    primarySpirit: 'Barcode',
-                    pours: []
-                };
-                cocktails.unshift(newBarcode);
-            }
+            // Insert elegant "Scan to Connect" barcode card at index 0
+            const newBarcode = {
+                name: "Scan to Connect",
+                isBarcode: true,
+                image: 'https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.JPG',
+                recipe: [],
+                flavorProfile: "Point your camera to join the digital road.",
+                cardHook: "Join the Deck",
+                category: "Non-Alcoholic",
+                titleColor: '#fbbf24',
+                primarySpirit: 'Barcode',
+                pours: []
+            };
+            cocktails.unshift(newBarcode);
         }
 
         /**
-         * STREAMING_CHUNK: Setting up image repair helpers...
+         * STREAMING_CHUNK: Managing image repair fallback chains
          */
         function repairBarcodeImage(img) {
             const fallbacks = [
                 "https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.jpg",
-                "https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.PNG",
                 "https://raw.githubusercontent.com/aarmax8/Nomads/main/3dbarcode.png",
-                "https://raw.githubusercontent.com/aarmax8/Nomads/master/3dbarcode.JPG",
-                "https://raw.githubusercontent.com/aarmax8/Nomads/master/3dbarcode.jpg",
-                "https://raw.githubusercontent.com/aarmax8/Nomads/e4ef12fb2bff260fe0d7de78741a3ec2307e381d/3dbarcode.JPG?raw=true",
-                "https://placehold.co/400x400/101010/f59e0b?text=Scan+To+Connect"
+                "https://placehold.co/400x400/15100a/fbbf24?text=Scan+To+Connect"
             ];
             
             if (!img.dataset.fallbackIndex) {
@@ -1596,14 +1569,14 @@
         }
 
         /**
-         * STREAMING_CHUNK: Processing card viewport bindings & render systems
+         * STREAMING_CHUNK: Rendering primary beverage deck viewport components
          */
         function renderMenu(itemsToRender) {
             menuGrid.innerHTML = '';
             if (itemsToRender.length === 0) {
                 menuGrid.innerHTML = `
                     <div class="text-center w-full p-10">
-                        <h3 class="text-2xl font-cinzel text-amber-400">No Matching Drinks</h3>
+                        <h3 class="text-2xl font-cinzel text-amber-500">No Matching Drinks</h3>
                         <p class="text-gray-400 mt-2">Try adjusting your filters in the Browse panel.</p>
                     </div>`;
                 return;
@@ -1640,15 +1613,10 @@
                     drinksInGroup.sort((a, b) => a.name.localeCompare(b.name));
                     
                     drinksInGroup.forEach(drink => {
-                        const originalIndex = cocktails.findIndex(c => c.name === drink.name); 
-                        const tocFont = titleFonts[originalIndex % titleFonts.length];
-                        
                         listHtml += `
-                            <div class="toc-item" 
+                            <div class="toc-item text-white" 
                                 data-name="${drink.name}" 
-                                style="color: ${drink.titleColor}; 
-                                        border-color: ${drink.titleColor}80;
-                                        font-family: '${tocFont}', sans-serif;">
+                                style="font-family: 'Cinzel', serif; border-color: rgba(217,119,6,0.4);">
                                 ${drink.name}
                             </div>`;
                     });
@@ -1660,27 +1628,27 @@
                     <div class="drink-card-inner">
                         <div class="drink-card-front">
                             <div class="text-center">
-                                <p class="text-md text-amber-400 font-cinzel">
+                                <p class="text-sm text-amber-500 font-cinzel">
                                     <i class="fas fa-undo-alt mr-2"></i> **Flip Card for Deck Index**
                                 </p>
                             </div>
                             <img src="${item.image}" alt="3D Barcode" onerror="repairBarcodeImage(this)">
-                            <div class="text-center mt-2">
+                            <div class="text-center mt-2 px-4">
                                 <h3 class="drink-card-title">${item.name}</h3>
                                 <div class="card-footer text-xs">
-                                    <p class="mb-2 text-amber-500">${item.cardHook}</p>
-                                    <p class="font-normal not-italic leading-tight text-gray-400"><strong class="text-gray-300">To Install:</strong> Tap Share then 'Add to Home Screen'.</p>
+                                    <p class="mb-2 text-amber-500 font-semibold">${item.cardHook}</p>
+                                    <p class="font-normal not-italic leading-tight text-gray-400">To Install: Tap Share then 'Add to Home Screen'.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="drink-card-back">
-                            <div class="card-header-front" style="border-bottom: 2px double rgba(133, 77, 14, 0.5); padding-top: 1rem; padding-bottom: 0.5rem;">
-                                <h3 class="drink-card-title" style="font-family: 'Cinzel', cursive; font-size: 1.75rem; color: #f59e0b;">The Full Deck</h3>
+                            <div class="card-header-front" style="border-bottom: 2px double rgba(217, 119, 6, 0.4); padding-top: 1rem; padding-bottom: 0.5rem;">
+                                <h3 class="drink-card-title" style="font-size: 1.75rem; color: #fbbf24;">The Full Deck</h3>
                             </div>
                             <div class="barcode-back-content">
                                 ${listHtml}
                             </div>
-                            <div class="card-footer-back" style="min-height: 40px; font-size: 0.8rem; font-style: italic; color: #8e8e93; border-top: 1px solid rgba(133, 77, 14, 0.5);">
+                            <div class="card-footer-back" style="min-height: 40px; font-size: 0.8rem; font-style: italic; color: #8e8e93; border-top: 1px solid rgba(217, 119, 6, 0.4);">
                                 Tap a name to jump to the card
                             </div>
                         </div>
@@ -1691,7 +1659,6 @@
 
         function renderDrinkCard(item, index) {
             const isUnavailable = !isDrinkMakeable(item);
-            const titleFont = titleFonts[index % titleFonts.length];
             const drinkFavoriteClass = favoriteDrinks.includes(item.name) ? 'is-favorite' : '';
 
             const recipeHtml = item.recipe.map(r => {
@@ -1719,7 +1686,7 @@
                     <div class="drink-card-inner">
                         <div class="drink-card-front">
                              <div class="card-header-front">
-                                 <h3 class="drink-card-title" style="font-family: '${titleFont}', sans-serif; line-height: 1.1; color: ${item.titleColor};">${item.name}</h3>
+                                 <h3 class="drink-card-title" style="color: ${item.titleColor};">${item.name}</h3>
                                  <button class="favorite-btn ${drinkFavoriteClass}" data-type="drink"><i class="fas fa-heart"></i></button>
                              </div>
                              <div class="px-6 pt-2 text-center flex-shrink-0">
@@ -1794,7 +1761,7 @@
                     <div class="favorite-item" data-name="${cardData.name}" data-view="drink">
                         <i class="fas ${iconInfo.icon} text-xl w-10 text-center ${iconInfo.colorClass}"></i>
                         <div class="ml-4">
-                            <h4 class="font-bold text-lg text-white">${cardData.name}</h4>
+                            <h4 class="font-bold text-lg text-white font-cinzel">${cardData.name}</h4>
                             <p class="text-sm text-gray-400">${cardData.flavorProfile}</p>
                         </div>
                     </div>`;
@@ -1804,7 +1771,7 @@
         }
 
         /**
-         * STREAMING_CHUNK: Populating and tracking stock listings inside inventory controllers
+         * STREAMING_CHUNK: Managing and displaying active ingredients
          */
         function renderBarStockModal() {
             const contentContainer = document.getElementById('bar-stock-content');
@@ -1814,7 +1781,7 @@
             const ingredientCategories = getIngredientCategories();
 
             const renderButtonsForStatus = (status) => {
-                let html = `<h3 class="text-xl ${status ? 'text-green-400' : 'text-red-400'} mb-4 font-black-ops">${status ? 'IN STOCK' : 'OUT OF STOCK'}</h3>`;
+                let html = `<h3 class="text-xl ${status ? 'text-green-500' : 'text-red-500'} mb-4 font-black-ops">${status ? 'IN STOCK' : 'OUT OF STOCK'}</h3>`;
                 let hasAnyContent = false;
                 
                 Object.keys(ingredientCategories).forEach(mainCategoryName => {
@@ -1861,7 +1828,7 @@
         }
 
         /**
-         * STREAMING_CHUNK: Re-binding standard filter sets and lists
+         * STREAMING_CHUNK: Setting up visual selection menus and dynamic pills
          */
         function initializeFilterModal() {
             const filterModalContent = document.getElementById('filter-modal-content');
@@ -1870,7 +1837,7 @@
             const ingredientCategories = getIngredientCategories();
             
             const favoritesFilter = `
-                <div class="flex items-center justify-between bg-black/20 p-3 rounded-lg">
+                <div class="flex items-center justify-between bg-black/20 p-3 rounded-lg border border-amber-500/10">
                     <h3 class="text-lg text-amber-500 font-rye tracking-wider">Show Favorites Only</h3>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" id="favorites-filter-toggle" class="sr-only peer">
@@ -1911,7 +1878,7 @@
             const ingredientFilter = `
                  <div>
                      <h3 class="text-lg text-amber-500 mb-2 font-rye tracking-wider">Contains Ingredient</h3>
-                     <select id="ingredient-filter-select" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                     <select id="ingredient-filter-select" class="w-full bg-gray-900 border border-amber-500/30 rounded-lg p-2 text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
                           <option value="">Any Ingredient</option>
                           ${allIngredients.map(ing => `<option value="${ing}">${ing}</option>`).join('')}
                      </select>
@@ -1922,7 +1889,9 @@
                       ${favoritesFilter}
                       <div class="border-t border-white/10 my-4"></div>
                       ${categoryFilters}
+                      <div class="border-t border-white/10 my-4"></div>
                       ${spiritFilters}
+                      <div class="border-t border-white/10 my-4"></div>
                       ${ingredientFilter}
                  </div>`;
             
@@ -2003,6 +1972,9 @@
             applyAndRenderFilters();
         }
 
+        /**
+         * STREAMING_CHUNK: Filtering drink cards based on ingredients
+         */
         function applyAndRenderFilters() {
             const barcodeCard = cocktails.find(c => c.isBarcode);
             let drinkableCocktails = cocktails.filter(c => !c.isBarcode);
@@ -2172,6 +2144,9 @@
             }, 300); 
         }
         
+        /**
+         * STREAMING_CHUNK: Processing toggle actions and throttles
+         */
         function handleToggleViewClick() {
              if (isToggleThrottled) return;
 
@@ -2271,6 +2246,9 @@
             });
         }
 
+        /**
+         * STREAMING_CHUNK: Binding button interactions
+         */
         function addActionBarEventListeners() {
             document.getElementById('action-filters-btn')?.addEventListener('click', () => {
                 updatePillsFromState(); 
@@ -2414,6 +2392,9 @@
             document.getElementById('toggle-view-btn-main')?.addEventListener('click', handleToggleViewClick);
         }
 
+        /**
+         * STREAMING_CHUNK: Boot-strapping systems
+         */
         function initApp() {
             menuGrid = document.getElementById('menu-grid');
             barStockModal = document.getElementById('bar-stock-modal');
