@@ -903,7 +903,7 @@
     <span></span> <i class="fas fa-times ml-2"></i>
 </div>
 
-<button id="sound-toggle" class="sound-toggle" aria-label="Toggle engine sound"><i class="fas fa-volume-high"></i></button>
+<button id="sound-toggle" class="sound-toggle" aria-label="Toggle sound"><i class="fas fa-volume-high"></i></button>
 
 <div id="splash-screen">
     <div class="splash-text">Tap to Enter</div>
@@ -1197,8 +1197,8 @@ const MENU = [
   pours: [{ slot: "Rinse the glass", picks: [P("Pernod", "Anise coats the glass, then dump it")] },
           { slot: "Whiskey — 2 oz", picks: [P("WhistlePig Rye", "Ultra-premium 10-year rye spice"), P("Old Grand-Dad Whiskey", "Spicy high-rye heat carries the anise"), P("Bulleit Bourbon", "Highest rye on the shelf"), P("Four Roses Whiskey", "Softer, rounder")] }],
   recipe: ["2 oz Whiskey", "0.25 oz Simple Syrup", "3 dashes Peychaud's Bitters", "Serve up, no ice"],
-  story: "Tastes like licorice and regret. Named for the phantom expenses that keep appearing on the club card. We know who's doing it.",
-  hook: "For the gears that aren't there." },
+  story: "New Orleans' oldest argument in a glass — everyone down there still fights over who mixed the first one. The absinthe rinse is a ghost: you coat the glass, you dump it out, and you taste it all night.",
+  hook: "The ghost you can still taste." },
 
 { name: "Rusty Nail", style: "Smoky & Sweet",
   pours: [{ slot: "Scotch — 2 oz", picks: [P("Johnnie Walker Red Label", "Smoke and bite — the original build")] },
@@ -1255,6 +1255,18 @@ const MENU = [
   story: "Nobody orders this without smirking. Nobody finishes one without ordering another. That is the entire business model of this bar.",
   hook: "Yes, that's really what it's called." },
 
+{ name: "John Collins", style: "Tall & Refreshing",
+  pours: [{ slot: "Whiskey — 2 oz", picks: [P("Four Roses Whiskey", "Fruit-forward, made for a long drink"), P("Jim Beam Bourbon", "The honest, everyday build"), P("Woodford Reserve", "Rounder, richer wood"), P("Crown Royal", "Soft Canadian, easy sipping")] }],
+  recipe: ["2 oz Whiskey", "1 oz Lemon Juice", "0.5 oz Simple Syrup", "Fill with Club Soda", "Cherry Garnish"],
+  story: "Tom Collins' whiskey-drinking older brother — the one who actually put in the work. Same tall, easy build, just with bourbon backbone where the gin used to be.",
+  hook: "The Collins that grew up on whiskey." },
+
+{ name: "Hot Toddy", style: "Warm & Soothing",
+  pours: [{ slot: "Whiskey — 2 oz", picks: [P("Jameson Irish Whiskey", "The classic toddy base — smooth and warm"), P("Bulleit Bourbon", "Spicier, more backbone"), P("Johnnie Walker Red Label", "A smoky Scotch version"), P("Crown Royal", "Soft and mellow")] }],
+  recipe: ["2 oz Whiskey", "0.75 oz Lemon Juice", "0.5 oz Simple Syrup", "Fill with Hot Water", "1 dash Angostura Bitters"],
+  story: "The club's official cure for everything: colds, heartbreak, a bad day, a suspiciously good day. Doc prescribes one for every ailment. Doc is not a doctor. It works anyway.",
+  hook: "Doctor's orders. Doc is not a doctor." },
+
 /* ===== VODKA ===== */
 { name: "Screwdriver", style: "Classic Breakfast Pour",
   pours: [{ slot: "Vodka — 2 oz", picks: [P("Skyy Vodka", "Nobody's tasting the vodka anyway"), P("Grey Goose Vodka", "If you're feeling generous")] }],
@@ -1294,12 +1306,6 @@ const MENU = [
   recipe: ["1.5 oz Vodka", "2 oz Cranberry Juice", "2 oz Pineapple Juice"],
   story: "For the guy who wears a Hawaiian shirt under his cut. He talks about riding to the Keys. He goes to the tourist trap on the pier.",
   hook: "A vacation in a glass." },
-
-{ name: "Madras", style: "Fruity & Bright",
-  pours: [{ slot: "Vodka — 1.5 oz", picks: [P("Skyy Vodka", "Neutral. The juice is the drink"), P("Grey Goose Vodka", "Marginally smoother")] }],
-  recipe: ["1.5 oz Vodka", "2 oz Cranberry Juice", "2 oz Orange Juice", "Orange Bitters, 2 dashes"],
-  story: "Ordered by people who want a Sea Breeze but can't remember which one has the grapefruit. We don't stock grapefruit, so this is what you're getting.",
-  hook: "Close enough to what you meant." },
 
 { name: "Sex on the Beach", style: "Sweet Tropical Blend",
   pours: [{ slot: "Vodka — 1.5 oz", picks: [P("Skyy Vodka", "Buried under fruit. Save the money"), P("Grey Goose Vodka", "If you insist")] },
@@ -1357,13 +1363,6 @@ const MENU = [
   recipe: ["2 oz Vodka", "1 oz Kahlúa", "1 oz Baileys Irish Cream", "Serve on the rocks"],
   story: "For when you don't want to deal with anything. It's an alcoholic blanket for your problems. It doesn't solve them. It makes them quieter.",
   hook: "It really ties the room together." },
-
-{ name: "Black Russian", style: "Dark & Roasted",
-  pours: [{ slot: "Vodka — 2 oz", picks: [P("Skyy Vodka", "Clean under the coffee"), P("Grey Goose Vodka", "Softer")] },
-          { slot: "Coffee — 1 oz", picks: [P("Kahlúa", "The black")] }],
-  recipe: ["2 oz Vodka", "1 oz Kahlúa", "Serve on the rocks"],
-  story: "A White Russian for people who've stopped pretending the cream makes it a dessert. Bleak. Efficient. Respected.",
-  hook: "No cream. No excuses." },
 
 { name: "Mudslide", style: "Decadent Dessert",
   pours: [{ slot: "Vodka — 1 oz", picks: [P("Skyy Vodka", "It's buried under cream. Save the money"), P("Grey Goose Vodka", "If you insist")] },
@@ -1438,8 +1437,8 @@ const MENU = [
   pours: [{ slot: "Gin — 1.5 oz", picks: [P("Beefeater Gin", "Citrus-forward — lets the flowers through"), P("Tanqueray Gin", "Juniper spine holds them up")] },
           { slot: "Floral — 0.75 oz", picks: [P("St-Germain", "The nomad's soft side")] }],
   recipe: ["1.5 oz Gin", "0.75 oz St-Germain", "0.5 oz Lemon Juice", "2 dashes Rosemary Lavender Bitters", "Fill with Club Soda"],
-  story: "Tiny said this would expand our horizons. We expanded his chore list. Turns out the joke's on us — this stuff is good.",
-  hook: "Even a nomad can be sophisticated." },
+  story: "The one drink on the menu you could hand your grandmother. She'd take one sip, raise an eyebrow, and quietly order a second before you'd finished pouring the first.",
+  hook: "Prettier than it has any right to be." },
 
 /* ===== RUM ===== */
 { name: "Cuba Libre", style: "Classic Spiced Cola",
@@ -1736,7 +1735,10 @@ function getServeSpec(d) {
     let method = "Stirred & Strained";
     const text = (d.recipe.join(' ') + ' ' + (d.pours || []).map(p => p.slot).join(' ')).toLowerCase();
     
-    if (text.includes("tall glass") || text.includes("fill with sprite") || text.includes("fill with cola") || text.includes("fill with club soda") || text.includes("fill with tonic") || text.includes("cranberry juice") || text.includes("highball")) {
+    if (text.includes("hot water") || text.includes("toddy")) {
+        glass = "Toddy Mug";
+        method = "Served Warm";
+    } else if (text.includes("tall glass") || text.includes("fill with sprite") || text.includes("fill with cola") || text.includes("fill with club soda") || text.includes("fill with tonic") || text.includes("cranberry juice") || text.includes("highball")) {
         glass = "Highball Glass";
         method = "Built in Glass";
     } else if (text.includes("up, no ice") || text.includes("gimlet") || text.includes("cosmopolitan") || text.includes("aviation") || text.includes("sidecar") || text.includes("between the sheets") || text.includes("lemon drop")) {
@@ -2158,115 +2160,120 @@ splash.addEventListener('click', () => {
     setTimeout(() => splash.remove(), 800);
 });
 
-/* ---------- Harley V-twin engine SFX (synthesized, no external files) ---------- */
-const Harley = (function () {
-    let ctx = null, master = null, noiseBuf = null, muted = false;
+/* ---------- Speakeasy SFX (synthesized, no external files) ---------- */
+const SFX = (function () {
+    let ctx = null, master = null, room = null, noiseBuf = null, muted = false;
     function ensure() {
         if (ctx) return;
         const AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) return;
         ctx = new AC();
         master = ctx.createGain();
-        master.gain.value = 0.85;
+        master.gain.value = 0.9;
         master.connect(ctx.destination);
-        const len = Math.floor(ctx.sampleRate * 0.5);
+        // subtle back-room ambiance via a short feedback delay
+        const inGain = ctx.createGain(); inGain.gain.value = 1;
+        const delay = ctx.createDelay(); delay.delayTime.value = 0.11;
+        const fb = ctx.createGain(); fb.gain.value = 0.26;
+        const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 500;
+        const wet = ctx.createGain(); wet.gain.value = 0.32;
+        inGain.connect(delay); delay.connect(fb); fb.connect(delay);
+        delay.connect(hp); hp.connect(wet); wet.connect(master);
+        room = inGain;
+        const len = Math.floor(ctx.sampleRate * 1.0);
         noiseBuf = ctx.createBuffer(1, len, ctx.sampleRate);
         const d = noiseBuf.getChannelData(0);
         for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
     }
     function resume() { ensure(); if (ctx && ctx.state === 'suspended') ctx.resume(); }
-    // one exhaust "bang": low sawtooth thump + a noise crack, enveloped
-    function pulse(t, freq, gain, bright, dur) {
-        if (!ctx || muted) return;
-        dur = dur || 0.11;
-        const osc = ctx.createOscillator();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(freq, t);
-        osc.frequency.exponentialRampToValueAtTime(Math.max(28, freq * 0.7), t + dur);
-        const lp = ctx.createBiquadFilter();
-        lp.type = 'lowpass';
-        lp.frequency.setValueAtTime(180 + bright * 950, t);
-        lp.Q.value = 6;
+    // a single bell-like partial (glass ring)
+    function partial(t, freq, gain, dur) {
+        const o = ctx.createOscillator();
+        o.type = 'sine';
+        o.frequency.setValueAtTime(freq, t);
         const g = ctx.createGain();
         g.gain.setValueAtTime(0.0001, t);
-        g.gain.exponentialRampToValueAtTime(gain, t + 0.006);
+        g.gain.exponentialRampToValueAtTime(gain, t + 0.004);
         g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-        osc.connect(lp); lp.connect(g); g.connect(master);
-        osc.start(t); osc.stop(t + dur + 0.03);
-        const ns = ctx.createBufferSource();
-        ns.buffer = noiseBuf;
-        const bp = ctx.createBiquadFilter();
-        bp.type = 'bandpass';
-        bp.frequency.setValueAtTime(480 + bright * 1300, t);
-        bp.Q.value = 0.7;
-        const ng = ctx.createGain();
-        ng.gain.setValueAtTime(0.0001, t);
-        ng.gain.exponentialRampToValueAtTime(gain * 0.5, t + 0.004);
-        ng.gain.exponentialRampToValueAtTime(0.0001, t + dur * 0.85);
-        ns.connect(bp); bp.connect(ng); ng.connect(master);
-        ns.start(t); ns.stop(t + dur + 0.03);
+        o.connect(g); g.connect(master); if (room) g.connect(room);
+        o.start(t); o.stop(t + dur + 0.03);
     }
-    // uneven "potato-potato" lope of the 45-degree V-twin
-    function idle(startT, cycles, baseFreq, gain) {
-        let t = startT;
-        for (let i = 0; i < cycles; i++) {
-            pulse(t, baseFreq, gain, 0.22, 0.12); t += 0.085;
-            pulse(t, baseFreq * 0.98, gain * 0.85, 0.18, 0.12); t += 0.235;
+    // glass clink: inharmonic bell partials + a tiny onset tick
+    function clinkAt(t, vol, base) {
+        partial(t, base, vol * 0.9, 0.30);
+        partial(t, base * 2.76, vol * 0.5, 0.18);
+        partial(t, base * 5.18, vol * 0.26, 0.10);
+        const ns = ctx.createBufferSource(); ns.buffer = noiseBuf;
+        const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 6500; bp.Q.value = 0.8;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(vol * 0.35, t);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.03);
+        ns.connect(bp); bp.connect(g); g.connect(master);
+        ns.start(t); ns.stop(t + 0.05);
+    }
+    function clink(vol, base) { resume(); if (!ctx || muted) return; clinkAt(ctx.currentTime + 0.005, vol || 0.42, base || 2100); }
+    function tick() { resume(); if (!ctx || muted) return; clinkAt(ctx.currentTime + 0.005, 0.24, 3200); }
+    // warm welcome chord, gently rolled (Cmaj9), finished with a glass clink
+    function welcome() {
+        resume(); if (!ctx || muted) return;
+        const t0 = ctx.currentTime + 0.03;
+        const notes = [261.63, 329.63, 392.00, 493.88, 587.33];
+        notes.forEach((f, i) => {
+            const t = t0 + i * 0.055;
+            const o = ctx.createOscillator(); o.type = 'triangle'; o.frequency.value = f;
+            const o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2;
+            const o2g = ctx.createGain(); o2g.gain.value = 0.12;
+            const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2600;
+            const g = ctx.createGain();
+            g.gain.setValueAtTime(0.0001, t);
+            g.gain.exponentialRampToValueAtTime(0.3, t + 0.02);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + 1.5);
+            o.connect(lp); o2.connect(o2g); o2g.connect(lp); lp.connect(g);
+            g.connect(master); if (room) g.connect(room);
+            o.start(t); o2.start(t); o.stop(t + 1.6); o2.stop(t + 1.6);
+        });
+        clinkAt(t0 + 0.30, 0.3, 2600);
+    }
+    // cocktail shaker (ice rattle) for the dice / random pick, ending on a clink
+    function shake() {
+        resume(); if (!ctx || muted) return;
+        const t0 = ctx.currentTime + 0.02, shakes = 6;
+        for (let i = 0; i < shakes; i++) {
+            const t = t0 + i * 0.115;
+            const ns = ctx.createBufferSource(); ns.buffer = noiseBuf;
+            const bp = ctx.createBiquadFilter(); bp.type = 'bandpass';
+            bp.frequency.value = 2500 + (i % 2 ? 800 : 0); bp.Q.value = 1.1;
+            const g = ctx.createGain();
+            g.gain.setValueAtTime(0.0001, t);
+            g.gain.exponentialRampToValueAtTime(0.5, t + 0.012);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
+            ns.connect(bp); bp.connect(g); g.connect(master); if (room) g.connect(room);
+            ns.start(t); ns.stop(t + 0.11);
         }
-        return t;
-    }
-    function blip() { // quick throttle tap
-        resume(); if (!ctx || muted) return;
-        let t = ctx.currentTime + 0.01, interval = 0.055, freq = 72;
-        for (let i = 0; i < 6; i++) {
-            const rise = i < 3;
-            pulse(t, freq, 0.5, 0.4 + i * 0.06, 0.09);
-            t += interval;
-            if (rise) { interval *= 0.88; freq *= 1.12; } else { interval *= 1.16; freq *= 0.93; }
-        }
-    }
-    function rev() { // bigger open-throttle rev
-        resume(); if (!ctx || muted) return;
-        let t = ctx.currentTime + 0.01, interval = 0.062, freq = 58;
-        for (let i = 0; i < 16; i++) {
-            const rise = i < 8;
-            pulse(t, freq, 0.55, 0.4 + Math.min(0.5, i * 0.05), 0.1);
-            t += interval;
-            if (rise) { interval *= 0.9; freq *= 1.08; } else { interval *= 1.12; freq *= 0.95; }
-        }
-    }
-    function start() { // starter crank, catch, settle into idle
-        resume(); if (!ctx || muted) return;
-        let t = ctx.currentTime + 0.03, freq = 40, interval = 0.15;
-        for (let i = 0; i < 4; i++) { pulse(t, freq, 0.5, 0.14, 0.13); t += interval; interval *= 0.8; freq *= 1.18; }
-        idle(t + 0.03, 9, 64, 0.55);
-    }
-    function tick() { // soft UI click
-        resume(); if (!ctx || muted) return;
-        pulse(ctx.currentTime + 0.005, 92, 0.2, 0.5, 0.06);
+        clinkAt(t0 + shakes * 0.115 + 0.05, 0.4, 2000);
     }
     function toggleMute(force) {
         muted = (typeof force === 'boolean') ? force : !muted;
-        if (master) master.gain.value = muted ? 0 : 0.85;
+        if (master) master.gain.value = muted ? 0 : 0.9;
         return muted;
     }
-    return { resume, blip, rev, start, tick, toggleMute };
+    return { resume, clink, tick, welcome, shake, toggleMute };
 })();
 
-/* wire engine sounds to the controls */
+/* wire speakeasy sounds to the controls */
 (function () {
-    splash.addEventListener('click', () => Harley.start(), { once: true });
+    splash.addEventListener('click', () => SFX.welcome(), { once: true });
     document.querySelectorAll('#action-bar .footer-btn, #footer-content .footer-btn').forEach(b => {
-        b.addEventListener('click', () => { b.id === 'action-random-btn' ? Harley.rev() : Harley.blip(); });
+        b.addEventListener('click', () => { b.id === 'action-random-btn' ? SFX.shake() : SFX.clink(); });
     });
-    document.getElementById('filter-modal-content').addEventListener('click', e => { if (e.target.closest('.filter-pill')) Harley.tick(); });
-    document.getElementById('bar-stock-content').addEventListener('click', e => { if (e.target.closest('.stock-btn')) Harley.tick(); });
+    document.getElementById('filter-modal-content').addEventListener('click', e => { if (e.target.closest('.filter-pill')) SFX.tick(); });
+    document.getElementById('bar-stock-content').addEventListener('click', e => { if (e.target.closest('.stock-btn')) SFX.tick(); });
     const st = document.getElementById('sound-toggle');
     st.addEventListener('click', () => {
-        const m = Harley.toggleMute();
+        const m = SFX.toggleMute();
         st.classList.toggle('is-muted', m);
         st.querySelector('i').className = m ? 'fas fa-volume-xmark' : 'fas fa-volume-high';
-        if (!m) Harley.blip();
+        if (!m) SFX.clink(0.4);
     });
 })();
 
