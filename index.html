@@ -1020,12 +1020,14 @@ const ingredientCategories = {
         'Other Schnapps': ['Butterscotch Schnapps', 'Root Beer Schnapps']
     },
     'Mixers & Bitters': {
-        'Sodas & Juices': ['Club Soda', 'Cola', 'Sprite', 'Cranberry Juice', 'Lemon Juice', 'Lime Juice', 'Orange Juice', 'Pineapple Juice', 'Sour Mix', 'Tonic Water'],
-        'Bitters': ['Angostura Bitters', 'Orange Bitters', "Peychaud's Bitters", 'Rosemary Lavender Bitters'],
+        'Sodas & Juices': ['Club Soda', 'Cola', 'Sprite', 'Cranberry Juice', 'Lemon Juice', 'Lime Juice', 'Orange Juice', 'Pineapple Juice', 'Sour Mix', 'Tonic Water', "Turner's Iced Tea"],
+        'Bitters': ['Angostura Bitters', 'Orange Bitters', "Peychaud's Bitters"],
         'Syrups': ['Grenadine', 'Simple Syrup']
     },
     'Other': {
-        'Garnish': ['Cherry Garnish']
+        'Garnish': ['Cherry Garnish'],
+        'Beer': ['Budweiser'],
+        'Coffee & Prep': ['Black Coffee']
     }
 };
 
@@ -1044,8 +1046,10 @@ const ING_ICON = {
     'Lime Juice': ['fa-lemon', '#a3e635'], 'Sour Mix': ['fa-lemon', '#fde047'],
     'Simple Syrup': ['fa-droplet', '#e5e7eb'], 'Grenadine': ['fa-droplet', '#ef4444'],
     'Angostura Bitters': ['fa-eye-dropper', '#d4af37'], 'Orange Bitters': ['fa-eye-dropper', '#fb923c'],
-    "Peychaud's Bitters": ['fa-eye-dropper', '#f43f5e'], 'Rosemary Lavender Bitters': ['fa-eye-dropper', '#a78bfa'],
-    'Cherry Garnish': ['fa-circle', '#ef4444']
+    "Peychaud's Bitters": ['fa-eye-dropper', '#f43f5e'],
+    'Cherry Garnish': ['fa-circle', '#ef4444'],
+    'Budweiser': ['fa-beer-mug-empty', '#f59e0b'], 'Black Coffee': ['fa-mug-saucer', '#78350f'],
+    "Turner's Iced Tea": ['fa-glass-water', '#b45309']
 };
 const FAMILY_ICON = {
     'Whiskey & Bourbon': ['fa-whiskey-glass', '#d4af37'], 'Vodka': ['fa-martini-glass', '#e0f2fe'],
@@ -1201,9 +1205,11 @@ const MENU = [
   hook: "The ghost you can still taste." },
 
 { name: "Rusty Nail", style: "Smoky & Sweet",
-  pours: [{ slot: "Scotch — 2 oz", picks: [P("Johnnie Walker Red Label", "Smoke and bite — the original build")] },
-          { slot: "Liqueur — 0.75 oz", picks: [P("Drambuie", "Honey, heather, spice")] }],
-  recipe: ["2 oz Scotch", "0.75 oz Drambuie", "Serve on the rocks"],
+  pours: [
+    { slot: "Scotch — 2 oz", picks: [P("Johnnie Walker Red Label", "Smoke and bite — the original build")] },
+    { slot: "Liqueur — 0.75 oz", picks: [P("Drambuie", "Honey, heather, spice")] }
+  ],
+  recipe: ["2 oz Scotch", "0.75 oz Drambuie"],
   story: "This is what you drink when you've made a deal you know you'll regret. Ask Jimmy about the lottery ticket. Actually, don't.",
   hook: "Every deal has its price." },
 
@@ -1213,7 +1219,7 @@ const MENU = [
     { slot: "Nut — 0.75 oz", picks: [P("Amaretto", "The offer you can't refuse")] },
     { slot: "Herbal Accent (Optional)", picks: [P("Drambuie", "Turns the Godfather into a complex Rusty Compass mix")] }
   ],
-  recipe: ["2 oz Scotch", "0.75 oz Amaretto", "Serve on the rocks"],
+  recipe: ["2 oz Scotch", "0.75 oz Amaretto"],
   story: "You drink this right before making a serious, legally questionable promise to men you probably shouldn't trust. It tastes like brotherhood and future problems.",
   hook: "To promises you'll try to keep." },
 
@@ -1228,22 +1234,22 @@ const MENU = [
     { slot: "Whiskey — 1.5 oz", picks: [P("Crown Royal", "The standard build. Soft Canadian"), P("Jameson Irish Whiskey", "Smooth, no bite to fight"), P("Seagram's 7", "Lighter and thriftier")] },
     { slot: "Fruit Boost", picks: [P("Apple Pucker", "Green apple blast"), P("Cherry Schnapps", "Pours a rich cherry-orchard twist")] }
   ],
-  recipe: ["1.5 oz Whiskey", "1 oz Apple Pucker", "Fill with Cranberry Juice"],
+  recipe: ["1.5 oz Whiskey", "1 oz Apple Pucker", "Splash of Cranberry Juice"],
   story: "Finn tried to make artisanal applejack in the clubhouse radiator. The radiator exploded. This is a safer tribute to his ambition.",
   hook: "A tribute to spectacular failures." },
 
-{ name: "Ward Eight", style: "Rich Citrus Blend",
-  pours: [{ slot: "Bourbon — 2 oz", picks: [P("Four Roses Whiskey", "Fruit-forward, made for this"), P("Bulleit Bourbon", "Rye spice sharpens it"), P("Jim Beam Bourbon", "The thrifty version")] }],
-  recipe: ["2 oz Bourbon", "0.75 oz Lemon Juice", "0.5 oz Orange Juice", "0.5 oz Grenadine", "Cherry Garnish"],
-  story: "This is the color of the bruise our prospect got when he mistook a puddle for a pothole. The sunset that night was almost as pretty as his failure.",
-  hook: "To the potholes you can't see." },
+{ name: "Hard Iced Tea", style: "Spiked Southern Classic",
+  pours: [{ slot: "Whiskey — 1.5 oz", picks: [P("Jim Beam Bourbon", "Sweet corn base plays nice with tea"), P("Four Roses Whiskey", "Fruit-forward, a smoother spike"), P("Crown Royal", "Soft Canadian, easy all-day drinking")] }],
+  recipe: ["1.5 oz Whiskey", "1 oz Lemon Juice", "0.5 oz Simple Syrup", "Fill with Turner's Iced Tea", "Cherry Garnish"],
+  story: "Turner keeps a pitcher of this behind the bar and swears it's 'just tea.' Nobody's believed him since the second glass. That's usually when the truth comes out.",
+  hook: "Just tea. Sure it is." },
 
 { name: "Alabama Slammer", style: "Sweet Southern Punch",
   pours: [{ slot: "Base — 1 oz", picks: [P("Southern Comfort", "Peach and spice. The slammer")] },
           { slot: "Sloe — 0.5 oz", picks: [P("Sloe Gin", "The red")] },
           { slot: "Nut — 0.5 oz", picks: [P("Amaretto", "The almond")] },
           { slot: "Spiced Twist", picks: [P("Cherry Schnapps", "Intensifies the stone-fruit notes")] }],
-  recipe: ["1 oz Southern Comfort", "0.5 oz Sloe Gin", "0.5 oz Amaretto", "Fill with Orange Juice", "Cherry Garnish"],
+  recipe: ["1 oz Southern Comfort", "0.5 oz Sloe Gin", "0.5 oz Amaretto", "0.5 oz Orange Juice", "Cherry Garnish"],
   story: "It's sweet enough to make you forget you're making a choice, and strong enough that you won't care about the consequences. Good luck.",
   hook: "For making the wrong choices." },
 
@@ -1251,7 +1257,7 @@ const MENU = [
   pours: [{ slot: "Sloe — 0.75 oz", picks: [P("Sloe Gin", "The sloe")] },
           { slot: "Comfort — 0.75 oz", picks: [P("Southern Comfort", "The comfortable")] },
           { slot: "Vodka — 0.75 oz", picks: [P("Skyy Vodka", "The screw. Nobody's tasting it"), P("Grey Goose Vodka", "If you're feeling generous")] }],
-  recipe: ["0.75 oz Sloe Gin", "0.75 oz Southern Comfort", "0.75 oz Vodka", "Fill with Orange Juice"],
+  recipe: ["0.75 oz Sloe Gin", "0.75 oz Southern Comfort", "0.75 oz Vodka", "Splash of Orange Juice"],
   story: "Nobody orders this without smirking. Nobody finishes one without ordering another. That is the entire business model of this bar.",
   hook: "Yes, that's really what it's called." },
 
@@ -1310,7 +1316,7 @@ const MENU = [
 { name: "Sex on the Beach", style: "Sweet Tropical Blend",
   pours: [{ slot: "Vodka — 1.5 oz", picks: [P("Skyy Vodka", "Buried under fruit. Save the money"), P("Grey Goose Vodka", "If you insist")] },
           { slot: "Peach — 0.75 oz", picks: [P("Peach Schnapps", "The whole personality of the drink")] }],
-  recipe: ["1.5 oz Vodka", "0.75 oz Peach Schnapps", "2 oz Orange Juice", "2 oz Cranberry Juice", "Cherry Garnish"],
+  recipe: ["1 oz Vodka", "0.5 oz Peach Schnapps", "0.5 oz Orange Juice", "0.5 oz Cranberry Juice", "Cherry Garnish"],
   story: "Named for the two sounds you'll hear. First: ooh, peaches. Then, ten minutes later: why did I have a third one.",
   hook: "Our version of a smoothie." },
 
@@ -1319,21 +1325,27 @@ const MENU = [
     { slot: "Vodka — 1.5 oz", picks: [P("Grey Goose Vodka", "Soft base under the peach"), P("Skyy Vodka", "Sharper, brighter")] },
     { slot: "Peach — 1 oz", picks: [P("Peach Schnapps", "The classic woo"), P("Raspberry Schnapps", "Lush red-berry modifier variation")] }
   ],
-  recipe: ["1.5 oz Vodka", "1 oz Peach Schnapps", "Fill with Cranberry Juice"],
+  recipe: ["1.5 oz Vodka", "1 oz Peach Schnapps", "Splash of Cranberry Juice"],
   story: "Our prospect ordered this at a rival bar and had to fight his way out. He won. We let him keep ordering it.",
   hook: "He earned the right to order it." },
 
-{ name: "Vodka Tonic", style: "Crisp & Bitter",
-  pours: [{ slot: "Vodka — 2 oz", picks: [P("Grey Goose Vodka", "Tonic exposes bad vodka. Use the good one"), P("Skyy Vodka", "Perfectly fine, honestly")] }],
-  recipe: ["2 oz Vodka", "Fill with Tonic Water"],
-  story: "The 'I guess' drink. When you can't decide, when you don't care, when you're just here to watch the chaos unfold.",
-  hook: "No fuss. No frills." },
+{ name: "Whiskey Daisy", style: "Bright Citrus & Whiskey",
+  pours: [{ slot: "Whiskey — 2 oz", picks: [P("Four Roses Whiskey", "Fruit-forward base made for citrus"), P("Bulleit Bourbon", "Rye spice cuts the sweetness"), P("Jim Beam Bourbon", "The honest, everyday pour")] }],
+  recipe: ["2 oz Whiskey", "0.75 oz Lemon Juice", "0.5 oz Grenadine", "0.5 oz Simple Syrup", "Fill with Club Soda", "Cherry Garnish"],
+  story: "Half the club swears the grenadine is what makes it a 'Daisy.' The other half just likes saying 'Daisy' out loud in a room full of leather and chrome. Both sides are right.",
+  hook: "A flower with a whiskey backbone." },
 
-{ name: "Vodka Collins", style: "Refreshing Citrus",
-  pours: [{ slot: "Vodka — 2 oz", picks: [P("Grey Goose Vodka", "Soft — lets the lemon sing"), P("Skyy Vodka", "Cleaner, sharper")] }],
-  recipe: ["2 oz Vodka", "1 oz Lemon Juice", "0.5 oz Simple Syrup", "Fill with Club Soda", "Cherry Garnish"],
-  story: "Tall, cold, and it lasts. This is what you nurse while everyone else is making the mistakes you'll hear about tomorrow.",
-  hook: "For watching, not participating." },
+{ name: "Irish Coffee", style: "Warm & Rich",
+  pours: [{ slot: "Whiskey — 1.5 oz", picks: [P("Jameson Irish Whiskey", "The only correct choice for an Irish Coffee")] }],
+  recipe: ["1.5 oz Whiskey", "Fill with Black Coffee", "0.5 oz Simple Syrup", "0.5 oz Baileys Irish Cream", "Float on top"],
+  story: "Doc prescribes this one for mornings after the club rides all night. Equal parts breakfast, apology, and second wind.",
+  hook: "Breakfast, apology, and second wind." },
+
+{ name: "Boilermaker", style: "Beer & Whiskey Back",
+  pours: [{ slot: "Whiskey — 1.5 oz", picks: [P("Jim Beam Bourbon", "The traditional boilermaker pour"), P("Old Grand-Dad Whiskey", "High-rye heat hits harder"), P("Jameson Irish Whiskey", "A smoother drop")] }],
+  recipe: ["1.5 oz Whiskey", "12 oz Budweiser", "Drop or sip, your call"],
+  story: "Nobody in this club agrees on the right way to drink a Boilermaker. Drop the shot, chase the shot, sip them side-by-side — every method has started an argument, and every argument has ended with another round.",
+  hook: "Drop it or sip it. Pick a side." },
 
 { name: "Appletini", style: "Sour Apple Sweet",
   pours: [{ slot: "Vodka — 2 oz", picks: [P("Grey Goose Vodka", "Clean canvas for the apple"), P("Skyy Vodka", "Cheaper, works the same")] },
@@ -1345,7 +1357,7 @@ const MENU = [
 { name: "Blue Lagoon", style: "Electric Citrus",
   pours: [{ slot: "Vodka — 1.5 oz", picks: [P("Skyy Vodka", "Blue bottle, blue drink. Poetic"), P("Grey Goose Vodka", "Smoother lagoon")] },
           { slot: "Color — 1 oz", picks: [P("Blue Curacao", "The lagoon")] }],
-  recipe: ["1.5 oz Vodka", "1 oz Blue Curacao", "Fill with Sprite"],
+  recipe: ["1.5 oz Vodka", "1 oz Blue Curacao", "Splash of Sprite"],
   story: "Sal says the color reminds him of brand new antifreeze, which is the only thing that gets him excited. We are worried about Sal.",
   hook: "Tastes better than degreaser. Probably." },
 
@@ -1376,7 +1388,7 @@ const MENU = [
 { name: "Gin and Tonic", style: "Classic Botanical",
   pours: [
     { slot: "Gin — 2 oz", picks: [P("Tanqueray Gin", "Big juniper. The classic G&T"), P("Beefeater Gin", "Softer, more citrus — easier drinking")] },
-    { slot: "Botanical Bitter", picks: [P("Rosemary Lavender Bitters", "Lush floral/herbal depth option"), P("Orange Bitters", "Spiced citrus twist")] }
+    { slot: "Botanical Bitter", picks: [P("Orange Bitters", "Spiced citrus twist")] }
   ],
   recipe: ["2 oz Gin", "Fill with Tonic Water"],
   story: "Two ingredients, a hundred years, and nobody has improved it. There's a lesson in that, and none of us have learned it.",
@@ -1400,7 +1412,7 @@ const MENU = [
 { name: "Gimlet", style: "Sharp & Sweet",
   pours: [
     { slot: "Gin — 2 oz", picks: [P("Beefeater Gin", "Citrus-led — plays with the lime"), P("Tanqueray Gin", "More juniper, more backbone")] },
-    { slot: "Floral Lift", picks: [P("St-Germain", "French Gimlet style — rich elderflower floralness"), P("Rosemary Lavender Bitters", "Soothing botanical-aroma enhancement")] }
+    { slot: "Floral Lift", picks: [P("St-Germain", "French Gimlet style — rich elderflower floralness")] }
   ],
   recipe: ["2 oz Gin", "0.75 oz Lime Juice", "0.5 oz Simple Syrup"],
   story: "Three ingredients. Served cold. Ends conversations. Our treasurer drinks these when he's about to tell you your tab is a problem.",
@@ -1436,7 +1448,7 @@ const MENU = [
 { name: "Elderflower Collins", style: "Delicate & Floral",
   pours: [{ slot: "Gin — 1.5 oz", picks: [P("Beefeater Gin", "Citrus-forward — lets the flowers through"), P("Tanqueray Gin", "Juniper spine holds them up")] },
           { slot: "Floral — 0.75 oz", picks: [P("St-Germain", "The nomad's soft side")] }],
-  recipe: ["1.5 oz Gin", "0.75 oz St-Germain", "0.5 oz Lemon Juice", "2 dashes Rosemary Lavender Bitters", "Fill with Club Soda"],
+  recipe: ["1.5 oz Gin", "0.75 oz St-Germain", "0.5 oz Lemon Juice", "Fill with Club Soda"],
   story: "The one drink on the menu you could hand your grandmother. She'd take one sip, raise an eyebrow, and quietly order a second before you'd finished pouring the first.",
   hook: "Prettier than it has any right to be." },
 
@@ -1583,7 +1595,7 @@ const MENU = [
     { slot: "Coffee — 1 oz", picks: [P("Kahlúa", "The toast")] },
     { slot: "Cream — 1 oz", picks: [P("Baileys Irish Cream", "Standing in for the cream")] }
   ],
-  recipe: ["1 oz Amaretto", "1 oz Kahlúa", "1 oz Baileys Irish Cream", "Serve on the rocks"],
+  recipe: ["1 oz Amaretto", "1 oz Kahlúa", "1 oz Baileys Irish Cream"],
   story: "Don't let the name fool you. This is not a one-and-done drink. It's a one-and-then-you-call-your-ex drink. You have been warned.",
   hook: "The perfect end to the day." },
 
@@ -1612,7 +1624,7 @@ const MENU = [
     { slot: "Cream — 0.5 oz", picks: [P("Baileys Irish Cream", "The float")] },
     { slot: "Spiced depth", picks: [P("Jägermeister", "Rooty, bitter anise complexity modifier")] }
   ],
-  recipe: ["1.5 oz Root Beer Schnapps", "0.5 oz Baileys Irish Cream", "Fill with Cola", "Float the cream on top"],
+  recipe: ["1.5 oz Root Beer Schnapps", "0.5 oz Baileys Irish Cream", "Splash of Cola", "Float the cream on top"],
   story: "We told the new guy to make a drink from whatever was in the junk drawer. He took us literally. We're as surprised as you are that it's good.",
   hook: "Sometimes genius is just mixing stuff." },
 
@@ -1676,8 +1688,8 @@ function allIngredientsOf(d) {
 MENU.forEach(d => {
     const text = (d.recipe.join(' ') + ' ' + (d.pours || []).map(p => p.slot).join(' ')).toLowerCase();
     const cats = new Set();
-    if (/orange juice|pineapple juice|cranberry juice|sour mix/.test(text)) cats.add('Brunch');
-    if (/club soda|tonic water|sprite/.test(text)) cats.add('Lunch');
+    if (/orange juice|pineapple juice|cranberry juice|sour mix|black coffee|hot water/.test(text)) cats.add('Brunch');
+    if (/club soda|tonic water|sprite|iced tea/.test(text)) cats.add('Lunch');
     if (/cola/.test(text)) cats.add('Dinner');
     const dessert = d.pours && d.pours.some(p => p.picks.some(k => /Baileys|Kahlúa|Amaretto|Butterscotch|Root Beer/.test(k.n)));
     if (dessert) cats.add('Dessert');
@@ -1710,7 +1722,7 @@ const FAVES_KEY = 'nomads_faves_v6';
 
 let barStock = {};
 let favorites = [];
-let filters = { category: 'all', family: null, favesOnly: false, ingredient: null };
+let filters = { category: 'all', family: null, favesOnly: false, ingredient: null, glassType: null };
 let storyView = false;
 
 try { barStock = JSON.parse(store.get(STOCK_KEY)) || {}; } catch (e) { barStock = {}; }
@@ -1730,34 +1742,88 @@ function isMakeable(d) {
 /* ---------- RENDER ---------- */
 const menuGrid = document.getElementById('menu-grid');
 
+const SERVE_OVERRIDES = {
+    "Old Fashioned": { type: "short", glass: "Double Rocks Glass", method: "Built over Block Ice" },
+    "Whiskey Sour": { type: "up", glass: "Coupe Glass", method: "Hard Shaken & Strained" },
+    "Seven and Seven": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Lynchburg Lemonade": { type: "tall", glass: "Collins Glass", method: "Built & Topped" },
+    "Bourbon and Coke": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Whiskey Highball": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Sazerac": { type: "short", glass: "Old Fashioned Glass (No Ice)", method: "Stirred & Strained" },
+    "Rusty Nail": { type: "shot", glass: "Shot Glass", method: "Served Neat, Chilled" },
+    "Godfather": { type: "shot", glass: "Shot Glass", method: "Served Neat, Chilled" },
+    "Scotch and Soda": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Washington Apple": { type: "shot", glass: "Shot Glass", method: "Shaken & Served Neat" },
+    "Alabama Slammer": { type: "shooter", glass: "Shooter Glass", method: "Shaken & Layered" },
+    "Sloe Comfortable Screw": { type: "shooter", glass: "Shooter Glass", method: "Shaken & Served Neat" },
+    "John Collins": { type: "tall", glass: "Collins Glass", method: "Built & Topped" },
+    "Hot Toddy": { type: "warm", glass: "Toddy Mug", method: "Served Warm" },
+    "Whiskey Daisy": { type: "tall", glass: "Highball Glass", method: "Built & Topped" },
+    "Irish Coffee": { type: "warm", glass: "Coffee Mug", method: "Served Warm" },
+    "Boilermaker": { type: "shot", glass: "Shot Glass & Beer Back", method: "Dropped or Sipped" },
+    "Hard Iced Tea": { type: "tall", glass: "Collins Glass", method: "Built & Topped" },
+
+    "Screwdriver": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Cosmopolitan": { type: "up", glass: "Coupe Glass", method: "Shaken & Double-Strained" },
+    "Lemon Drop": { type: "shot", glass: "Shot Glass", method: "Shaken, Sugar Rim" },
+    "Kamikaze": { type: "shot", glass: "Shot Glass", method: "Shaken & Served Neat" },
+    "Cape Codder": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Bay Breeze": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Sex on the Beach": { type: "shooter", glass: "Shooter Glass", method: "Shaken & Served Neat" },
+    "Woo Woo": { type: "shooter", glass: "Shooter Glass", method: "Shaken & Served Neat" },
+    "Appletini": { type: "up", glass: "Coupe Glass", method: "Shaken & Double-Strained" },
+    "Blue Lagoon": { type: "shooter", glass: "Shooter Glass", method: "Shaken & Served Neat" },
+    "Purple Hooter": { type: "shooter", glass: "Shooter Glass", method: "Shaken & Served Neat" },
+    "White Russian": { type: "short", glass: "Rocks Glass", method: "Built over Ice" },
+    "Mudslide": { type: "short", glass: "Rocks Glass", method: "Built over Ice" },
+
+    "Gin and Tonic": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Tom Collins": { type: "tall", glass: "Collins Glass", method: "Built & Topped" },
+    "Gin Rickey": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Gimlet": { type: "up", glass: "Coupe Glass", method: "Shaken & Double-Strained" },
+    "Aviation": { type: "up", glass: "Coupe Glass", method: "Shaken & Double-Strained" },
+    "Sloe Gin Fizz": { type: "tall", glass: "Fizz Glass", method: "Built & Topped" },
+    "Singapore Sling": { type: "tall", glass: "Hurricane Glass", method: "Shaken & Built" },
+    "Charlie Chaplin": { type: "shot", glass: "Shot Glass", method: "Shaken & Served Neat" },
+    "Elderflower Collins": { type: "tall", glass: "Collins Glass", method: "Built & Topped" },
+
+    "Cuba Libre": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Daiquiri": { type: "up", glass: "Coupe Glass", method: "Shaken & Double-Strained" },
+    "Mai Tai": { type: "short", glass: "Rocks Glass", method: "Shaken & Built over Crushed Ice" },
+    "Hurricane": { type: "tall", glass: "Hurricane Glass", method: "Shaken & Built" },
+    "Bahama Mama": { type: "tall", glass: "Hurricane Glass", method: "Shaken & Built" },
+    "Malibu Bay Breeze": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Planter's Punch": { type: "tall", glass: "Highball Glass", method: "Built & Shaken" },
+    "Zombie": { type: "tall", glass: "Hurricane Glass", method: "Shaken & Built" },
+
+    "Margarita": { type: "short", glass: "Rocks Glass", method: "Shaken, Salt Rim" },
+    "Tequila Sunrise": { type: "tall", glass: "Highball Glass", method: "Built & Layered" },
+    "Batanga": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Matador": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Juan Collins": { type: "tall", glass: "Collins Glass", method: "Built & Topped" },
+
+    "Sidecar": { type: "up", glass: "Coupe Glass", method: "Shaken & Double-Strained" },
+    "Between the Sheets": { type: "shot", glass: "Shot Glass", method: "Shaken & Served Neat" },
+    "Apricot Sour": { type: "shot", glass: "Shot Glass", method: "Shaken & Served Neat" },
+
+    "Amaretto Sour": { type: "shot", glass: "Shot Glass", method: "Shaken & Served Neat" },
+    "B-52": { type: "shooter", glass: "Shooter Glass", method: "Slowly Layered" },
+    "Buttery Nipple": { type: "shooter", glass: "Shooter Glass", method: "Layered" },
+    "Toasted Almond": { type: "shooter", glass: "Shooter Glass", method: "Shaken & Layered" },
+    "Surfer on Acid": { type: "shot", glass: "Shot Glass", method: "Shaken & Served Neat" },
+    "Garibaldi": { type: "tall", glass: "Highball Glass", method: "Built & Shaken" },
+    "Americano": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Root Beer Float": { type: "shooter", glass: "Shooter Glass", method: "Layered" },
+
+    "Long Island": { type: "tall", glass: "Collins Glass", method: "Built & Topped" },
+    "Adios": { type: "tall", glass: "Collins Glass", method: "Built & Topped" },
+
+    "Shirley Temple": { type: "tall", glass: "Highball Glass", method: "Built in Glass" },
+    "Roy Rogers": { type: "tall", glass: "Highball Glass", method: "Built in Glass" }
+};
+
 function getServeSpec(d) {
-    let glass = "Rocks Glass";
-    let method = "Stirred & Strained";
-    const text = (d.recipe.join(' ') + ' ' + (d.pours || []).map(p => p.slot).join(' ')).toLowerCase();
-    
-    if (text.includes("hot water") || text.includes("toddy")) {
-        glass = "Toddy Mug";
-        method = "Served Warm";
-    } else if (text.includes("tall glass") || text.includes("fill with sprite") || text.includes("fill with cola") || text.includes("fill with club soda") || text.includes("fill with tonic") || text.includes("cranberry juice") || text.includes("highball")) {
-        glass = "Highball Glass";
-        method = "Built in Glass";
-    } else if (text.includes("up, no ice") || text.includes("gimlet") || text.includes("cosmopolitan") || text.includes("aviation") || text.includes("sidecar") || text.includes("between the sheets") || text.includes("lemon drop")) {
-        glass = "Coupe Glass";
-        method = "Shaken & Double-Strained";
-    } else if (text.includes("layer in order") || text.includes("float the cream")) {
-        glass = "Premium Shot Glass";
-        method = "Slowly Layered";
-    } else if (text.includes("shot") || text.includes("divebomb") || text.includes("purple hooter") || text.includes("buttery nipple") || text.includes("b-52") || text.includes("kamikaze")) {
-        glass = "Shot Glass";
-        method = "Shaken Shot";
-    } else if (text.includes("rocks") || text.includes("old fashioned") || text.includes("godfather") || text.includes("white russian")) {
-        glass = "Double Rocks Glass";
-        method = "Built over Block Ice";
-    } else if (text.includes("sour") || text.includes("daiquiri") || text.includes("margarita") || text.includes("mai tai")) {
-        glass = "Coupe or Rocks";
-        method = "Hard Shaken & Strained";
-    }
-    return { glass, method };
+    return SERVE_OVERRIDES[d.name] || { glass: "Rocks Glass", method: "Stirred & Strained", type: "short" };
 }
 
 function recipeLine(line) {
@@ -1903,6 +1969,7 @@ function visibleCards() {
             const hasPour = d.pours && d.pours.some(p => p.picks.some(k => k.n === filters.ingredient));
             if (!hasFixed && !hasPour) return false;
         }
+        if (filters.glassType && getServeSpec(d).type !== filters.glassType) return false;
         return true;
     });
 }
@@ -1924,7 +1991,7 @@ function render() {
 
 function updateActionBar() {
     document.getElementById('action-favorites-btn').classList.toggle('is-active', filters.favesOnly);
-    const active = filters.category !== 'all' || filters.family || filters.ingredient;
+    const active = filters.category !== 'all' || filters.family || filters.ingredient || filters.glassType;
     document.getElementById('action-filter-btn').classList.toggle('is-active-filter', !!active);
     document.getElementById('story-view-btn').classList.toggle('is-active', storyView);
 }
@@ -2072,6 +2139,14 @@ const CATEGORIES = ['all', 'Brunch', 'Lunch', 'Dinner', 'Dessert'];
 const FAMILIES = Object.keys(ingredientCategories.Spirits);
 
 const CAT_ICON = { all: 'fa-layer-group', Brunch: 'fa-mug-saucer', Lunch: 'fa-sun', Dinner: 'fa-moon', Dessert: 'fa-ice-cream' };
+const GLASS_TYPES = [
+    { key: 'shot', label: 'Shots', icon: 'fa-whiskey-glass' },
+    { key: 'shooter', label: 'Shooters', icon: 'fa-flask' },
+    { key: 'short', label: 'Short Glass', icon: 'fa-wine-glass' },
+    { key: 'tall', label: 'Tall Glass', icon: 'fa-bottle-droplet' },
+    { key: 'up', label: 'Up / Coupe', icon: 'fa-martini-glass' },
+    { key: 'warm', label: 'Warm', icon: 'fa-mug-hot' }
+];
 
 function filterMatchCount() {
     return visibleCards().filter(d => !d.isBarcode).length;
@@ -2098,6 +2173,12 @@ function renderFilters() {
             </div>
         </div>
         <div class="filter-section">
+            <div class="filter-sheet-eyebrow">Glassware</div>
+            <div class="filter-row">
+                ${GLASS_TYPES.map(g => `<button class="filter-pill ${filters.glassType === g.key ? 'is-active' : ''}" data-glass="${g.key}"><i class="fas ${g.icon}"></i>${g.label}</button>`).join('')}
+            </div>
+        </div>
+        <div class="filter-section">
             <div class="filter-sheet-eyebrow">Favorites</div>
             <div class="filter-row">
                 <button class="filter-pill ${filters.favesOnly ? 'is-active' : ''}" data-faves="1"><i class="fas fa-heart"></i>Favorites only</button>
@@ -2110,6 +2191,7 @@ document.getElementById('filter-modal-content').addEventListener('click', e => {
     if (!p) return;
     if (p.dataset.cat) filters.category = p.dataset.cat;
     if (p.dataset.fam) filters.family = (filters.family === p.dataset.fam) ? null : p.dataset.fam;
+    if (p.dataset.glass) filters.glassType = (filters.glassType === p.dataset.glass) ? null : p.dataset.glass;
     if (p.dataset.faves) filters.favesOnly = !filters.favesOnly;
     
     // Clear ingredient filter if user is doing broad filtering
@@ -2118,7 +2200,7 @@ document.getElementById('filter-modal-content').addEventListener('click', e => {
     renderFilters();
 });
 document.getElementById('reset-filters-btn').onclick = () => {
-    filters = { category: 'all', family: null, favesOnly: false, ingredient: null };
+    filters = { category: 'all', family: null, favesOnly: false, ingredient: null, glassType: null };
     renderFilters(); render();
 };
 document.getElementById('apply-filters-btn').onclick = () => { render(); closeModal('filter-modal'); };
