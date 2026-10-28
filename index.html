@@ -142,6 +142,9 @@
         <button class="pill-btn px-4 py-1.5 rounded-full text-xs uppercase tracking-wider font-semibold border border-gray-700/80 bg-[#16161A] text-gray-300 hover:border-brand-gold/50 transition-all" data-category="dessert">
           ☕ Cream & Sweet
         </button>
+        <button class="pill-btn px-4 py-1.5 rounded-full text-xs uppercase tracking-wider font-semibold border border-gray-700/80 bg-[#16161A] text-gray-300 hover:border-brand-gold/50 transition-all" data-category="party">
+          🎯 Shots & Party
+        </button>
       </div>
     </div>
 
@@ -176,8 +179,55 @@
 
   <!-- JavaScript Application Logic -->
   <script>
-    // Cocktails tailored specifically to your active bar bottles and mixers (zero juice required)
+        // Cocktails tailored specifically to your active bar bottles and mixers
     const cocktails = [
+      {
+        id: "caramel-apple-shot",
+        name: "Caramel Apple Shot",
+        category: "party",
+        type: "party",
+        badge: "Party Shooter",
+        tagline: "Crisp green apple layered with rich golden caramel.",
+        specs: [
+          "1.0 oz DeKuyper Buttershots",
+          "1.0 oz DeKuyper Sour Apple Pucker"
+        ],
+        glass: "Shooter Glass",
+        garnish: "None",
+        prep: "Shake equal parts with ice until frosty cold, strain into a chilled shot glass."
+      },
+      {
+        id: "purple-hooter",
+        name: "Purple Hooter",
+        category: "party",
+        type: "party",
+        badge: "Party Shooter",
+        tagline: "Bright raspberry punch with an electric kick.",
+        specs: [
+          "1.0 oz Grey Goose Vodka",
+          "0.75 oz DeKuyper Razzmatazz",
+          "Top with 7Up (or splash Club Soda)"
+        ],
+        glass: "Shooter or Rocks Glass",
+        garnish: "None",
+        prep: "Shake vodka and Razzmatazz with ice, strain into shot glass or rocks, splash with 7Up."
+      },
+      {
+        id: "red-headed-slut",
+        name: "Red Headed Slut",
+        category: "party",
+        type: "party",
+        badge: "Crowd Pleaser",
+        tagline: "Like a bike with a sticky throttle—hold on tight.",
+        specs: [
+          "1.0 oz Jägermeister",
+          "1.0 oz DeKuyper Peachtree",
+          "Top with Cranberry Juice (or 7Up & Grenadine float)"
+        ],
+        glass: "Shooter / Lowball",
+        garnish: "None",
+        prep: "Shake hard with ice until frost forms, strain into a chilled shooter."
+      },
       {
         id: "double-barrel",
         name: "The Double-Barrel Nomad",
